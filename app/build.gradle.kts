@@ -1,5 +1,5 @@
 plugins {
-    id ("com.android.application")
+    id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
@@ -25,11 +25,17 @@ android {
         getByName("debug") {
             isMinifyEnabled = false
             isDebuggable = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -67,7 +73,9 @@ dependencies {
     implementation(AndroidXDependencies.dataStore)
     implementation(AndroidXDependencies.dataStoreCore)
 
-
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.37")
+    kapt("com.google.dagger:hilt-android-compiler:2.37")
 // Android KTX
     implementation(AndroidXDependencies.fragmentKtx)
     implementation(AndroidXDependencies.activityKtx)
@@ -137,7 +145,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("androidx.work:work-runtime:2.8.0-alpha01")
-
 
 
     //Timber
