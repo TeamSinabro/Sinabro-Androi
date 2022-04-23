@@ -11,6 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sinabro">
         <activity
+            android:name=".presentation.ui.vocasearch.VocaSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.vocalearning.VocaLearningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.subjectselect.SubjectSelectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.pronouncelearning.PronounceLearningActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
