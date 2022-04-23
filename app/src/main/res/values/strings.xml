@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Sinabro</string>
+
+    <!-- 교과서 선택 -->
+    <string name="subject_select_title">교과서 선택</string>
+    <string name="ok">확인</string>
 </resources>

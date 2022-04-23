@@ -1,6 +1,5 @@
 package com.sinabro.presentation.ui.subjectselect
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.sinabro.R
 import com.sinabro.databinding.ActivitySubjectSelectBinding
