@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="subject_select">
+        <item>사회</item>
+        <item>과학</item>
+        <item>국어</item>
+    </string-array>
+
+    <string-array name="subject_unit">
+        <item>1단원</item>
+        <item>2단원</item>
+        <item>3단원</item>
+    </string-array>
+
+</resources>
