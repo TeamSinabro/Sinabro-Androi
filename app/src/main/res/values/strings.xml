@@ -6,4 +6,8 @@
     <string name="subject">교과서</string>
     <string name="unit">단원</string>
     <string name="ok">확인</string>
+
+    <!-- 메인 -->
+    <string name="main_title">시나브로</string>
+    <string nmae="voca_search"></string>
 </resources>
