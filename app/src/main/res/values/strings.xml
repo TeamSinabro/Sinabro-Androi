@@ -9,5 +9,8 @@
 
     <!-- 메인 -->
     <string name="main_title">시나브로</string>
-    <string nmae="voca_search"></string>
+    <string name="voca_search">단어 검색</string>
+    <string name="voca_learning">어휘 학습</string>
+    <string name="pronounce_learning">발음 학습</string>
+
 </resources>
