@@ -12,19 +12,7 @@
         android:layout_height="match_parent"
         tools:context=".presentation.ui.pronouncelearning.PronounceLearningActivity">
 
-        <TextView
-            android:id="@+id/text_example_sentence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/voca_definition"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/notosanskr_bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/rectangle_fill_sinabro_gray_radius_5"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -16,7 +16,12 @@
     <!--단어검색-->
     <string name="search">검색</string>
     <string name="main">메인</string>
-    <string name="voca_definition">단어 정의 및 유의어 반의어</string>
+    <string name="voca_definition_synonym">단어 정의 및 유의어 반의어</string>
     <string name="voca_sentence">교과서 문장 예시 및 단원 페이지 정보</string>
+    <string name="example_sentence">예시 문장</string>
+    <string name="voca_definition">단어 정의</string>
+    <string name="answer_ok">정답 확인</string>
+    <string name="listen">듣기</string>
+    <string name="next_problem">다음 문제</string>
 
 </resources>
