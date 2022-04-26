@@ -24,5 +24,6 @@
     <string name="listen">듣기</string>
     <string name="next_problem">다음 문제</string>
     <string name="rec">녹음</string>
+    <string name="user_score">사용자 점수</string>
 
 </resources>

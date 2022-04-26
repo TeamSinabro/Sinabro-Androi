@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sinabro">
         <activity
+            android:name=".presentation.ui.pronouncelearning.PronounceLearningAnswerActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.vocalearning.VocaLearningAnswerActivity"
             android:exported="false" />
         <activity
