@@ -23,5 +23,6 @@
     <string name="answer_ok">정답 확인</string>
     <string name="listen">듣기</string>
     <string name="next_problem">다음 문제</string>
+    <string name="rec">녹음</string>
 
 </resources>
