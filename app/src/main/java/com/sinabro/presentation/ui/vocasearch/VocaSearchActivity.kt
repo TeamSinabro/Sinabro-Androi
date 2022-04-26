@@ -9,6 +9,14 @@ import com.sinabro.presentation.base.BaseActivity
 class VocaSearchActivity : BaseActivity<ActivityVocaSearchBinding>(R.layout.activity_voca_search) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        goMain()
+    }
+
+    //메인 이동
+    private fun goMain(){
+        binding.textVocaSearchOk.setOnClickListener {
+            finish()
+        }
 
     }
 }

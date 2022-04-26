@@ -15,5 +15,6 @@
 
     <!--단어검색-->
     <string name="search">검색</string>
+    <string name="main">메인</string>
 
 </resources>
