@@ -13,4 +13,7 @@
     <string name="voca_learning">어휘 학습</string>
     <string name="pronounce_learning">발음 학습</string>
 
+    <!--단어검색-->
+    <string name="search">검색</string>
+
 </resources>
