@@ -16,5 +16,7 @@
     <!--단어검색-->
     <string name="search">검색</string>
     <string name="main">메인</string>
+    <string name="voca_definition">단어 정의 및 유의어 반의어</string>
+    <string name="voca_sentence">교과서 문장 예시 및 단원 페이지 정보</string>
 
 </resources>
