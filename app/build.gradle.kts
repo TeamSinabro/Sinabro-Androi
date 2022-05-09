@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -19,6 +20,8 @@ android {
         versionName = Apps.versionName
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
 
     buildTypes {
@@ -62,10 +65,10 @@ dependencies {
     // debugImplementation("com.squareup.leakcanary:leakcanary-android:2.6")
 
 // ViewModel
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
 
 
@@ -76,12 +79,16 @@ dependencies {
     //Hilt
     implementation("com.google.dagger:hilt-android:2.37")
     kapt("com.google.dagger:hilt-android-compiler:2.37")
+
 // Android KTX
     implementation(AndroidXDependencies.fragmentKtx)
     implementation(AndroidXDependencies.activityKtx)
     implementation(AndroidXDependencies.viewModelKtx)
     implementation(AndroidXDependencies.liveDataKtx)
 
+    //room
+    implementation("androidx.room:room-runtime:2.4.2")
+    kapt("androidx.room:room-compiler:2.4.2")
 // Glide
     implementation(ThirdPartyDependencies.glide)
     implementation("androidx.appcompat:appcompat:1.4.0")
@@ -125,7 +132,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
 //annotation
-    implementation("org.jetbrains:annotations:15.0")
+    implementation("org.jetbrains:annotations:16.0.1")
     implementation("androidx.annotation:annotation:1.3.0")
 
 //koin
@@ -152,4 +159,7 @@ dependencies {
 
     //update
     implementation("com.google.android.play:core:1.10.3")
+}
+kapt {
+    correctErrorTypes = true
 }

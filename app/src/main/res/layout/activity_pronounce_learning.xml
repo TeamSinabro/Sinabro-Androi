@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/text_pronounce_learning_rec"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/rec"
             android:paddingHorizontal="35dp"
@@ -60,9 +60,24 @@
             android:layout_marginBottom="25dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/text_pronounce_learning_rec_stop"
+            app:layout_constraintStart_toStartOf="@+id/text_pronounce_learning_example_sentence"
             />
 
+        <TextView
+            android:id="@+id/text_pronounce_learning_rec_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stop"
+            android:paddingHorizontal="28dp"
+            android:gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_bold"
+            android:background="@drawable/rectangle_fill_dark_pink_radius_10"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/text_pronounce_learning_example_sentence"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
