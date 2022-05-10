@@ -87,7 +87,6 @@ class PronounceLearningActivity : BaseActivity<ActivityPronounceLearningBinding>
             mediaRecorder?.stop()
             mediaRecorder?.reset()
             mediaRecorder?.release()
-
             state = false
             Toast.makeText(this, "저장 되었습니다.", Toast.LENGTH_SHORT).show()
 
@@ -96,6 +95,10 @@ class PronounceLearningActivity : BaseActivity<ActivityPronounceLearningBinding>
         }
     }
 
+    //평가 서버 통신
+    private fun postPronounce(){
 
+
+    }
 
 }
