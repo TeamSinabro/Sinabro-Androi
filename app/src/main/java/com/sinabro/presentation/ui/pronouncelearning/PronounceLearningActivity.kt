@@ -12,11 +12,15 @@ import androidx.core.content.ContextCompat
 import com.sinabro.R
 import com.sinabro.databinding.ActivityPronounceLearningBinding
 import com.sinabro.presentation.base.BaseActivity
+import com.sinabro.presentation.ui.pronouncelearning.viewmodel.PronounceViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.IOException
 import java.util.*
 @AndroidEntryPoint
 class PronounceLearningActivity : BaseActivity<ActivityPronounceLearningBinding>(R.layout.activity_pronounce_learning) {
+    private val pronounceViewModel : PronounceViewModel by viewModel()
+
 
     private var output: String? = null
     private var mediaRecorder : MediaRecorder?=null
@@ -55,7 +59,7 @@ class PronounceLearningActivity : BaseActivity<ActivityPronounceLearningBinding>
         }
     }
 
-
+    //녹음 시작
     private fun startRecording(){
         //config and create MediaRecorder Object
         val fileName: String = Date().time.toString() + ".mp3"
@@ -77,17 +81,21 @@ class PronounceLearningActivity : BaseActivity<ActivityPronounceLearningBinding>
             e.printStackTrace()
         }
     }
-
+    //녹음 중지
     private fun stopRecording(){
         if(state){
             mediaRecorder?.stop()
             mediaRecorder?.reset()
             mediaRecorder?.release()
+
             state = false
-            Toast.makeText(this, "중지 되었습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "저장 되었습니다.", Toast.LENGTH_SHORT).show()
+
         } else {
             Toast.makeText(this, "레코딩 상태가 아닙니다.", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 
 }

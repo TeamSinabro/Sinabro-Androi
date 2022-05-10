@@ -26,5 +26,7 @@
     <string name="rec">녹음</string>
     <string name="user_score">사용자 점수</string>
     <string name="stop">중지</string>
+    <string name="save">저장</string>
+    <string name="file_upload">파일 업로드 및 점수 확인</string>
 
 </resources>

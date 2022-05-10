@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ApiModule {
+object NetworkModule {
 
     @Provides
     fun pronounceBaseUrl() = "http://aiopen.etri.re.kr:8000/"
@@ -41,11 +41,7 @@ object ApiModule {
             .build()
     }
 
-    @Singleton
-    @Provides
-    fun pronounceService(retrofit: Retrofit) : PronounceService{
-        return retrofit.create(PronounceService::class.java)
-    }
+
 
 
 }
