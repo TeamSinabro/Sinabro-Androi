@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface PronounceService {
 
-    @POST("/WiseASR/Pronunciation")
+    @POST("/WiseASR/PronunciationKor")
     suspend fun postPronounce(
         @Body requestPronounceData: RequestPronounceData
     ) : ResponsePronounceData

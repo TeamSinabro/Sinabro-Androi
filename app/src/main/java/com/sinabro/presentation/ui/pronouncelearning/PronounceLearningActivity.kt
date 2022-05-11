@@ -42,6 +42,7 @@ class PronounceLearningActivity :
         goAnswer()
         clickRecordBtn()
         saveRecording()
+        sendData()
     }
 
     //사용자 점수 확인
@@ -131,6 +132,7 @@ class PronounceLearningActivity :
         } else {
             TODO("VERSION.SDK_INT < O")
         }
+        Timber.d("audioContent $audioContent")
         pronounceViewModel.postPronounce(
             PronouncePostItem(
                 "c2848d62-dd79-4f12-bdbe-2288528d5669",
@@ -139,7 +141,16 @@ class PronounceLearningActivity :
                 audioContent
             )
         )
-
     }
 
+    //점수 데이터 넘겨 주기
+    private fun sendData(){
+        pronounceViewModel.pronounceData.observe(this){
+            val intent = Intent(this, PronounceLearningAnswerActivity::class.java)
+            intent.putExtra("pronounceScore", it.result.toString())
+            startActivity(intent)
+            finish()
+        }
+
+    }
 }

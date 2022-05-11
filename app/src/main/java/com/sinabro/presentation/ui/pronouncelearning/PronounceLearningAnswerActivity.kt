@@ -11,6 +11,7 @@ class PronounceLearningAnswerActivity : BaseActivity<ActivityPronounceLearningAn
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         goMain()
+        initScore()
     }
 
     //메인으로 이동
@@ -19,6 +20,12 @@ class PronounceLearningAnswerActivity : BaseActivity<ActivityPronounceLearningAn
             finish()
         }
     }
+    //점수 받아오기
+    private fun initScore(){
+        val score = intent.getStringExtra("pronounceScore")
+        binding.textPronounceLearningScore.text = score
 
+
+    }
     //다음문제
 }

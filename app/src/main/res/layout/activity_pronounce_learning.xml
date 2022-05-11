@@ -45,23 +45,7 @@
             app:layout_constraintStart_toStartOf="@+id/text_pronounce_learning_example_sentence"
             android:background="@drawable/rectangle_fill_sinabro_gray_radius_5" />
 
-        <TextView
-            android:id="@+id/text_pronounce_learning_file_upload"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/file_upload"
-            android:paddingHorizontal="20dp"
-            android:gravity="center_horizontal"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/notosanskr_bold"
-            android:background="@drawable/rectangle_fill_dark_pink_radius_10"
 
-            app:layout_constraintTop_toBottomOf="@+id/text_pronounce_learning_listen"
-            app:layout_constraintBottom_toTopOf="@+id/text_pronounce_learning_rec"
-            app:layout_constraintEnd_toEndOf="@+id/text_pronounce_learning_example_sentence"
-            app:layout_constraintStart_toStartOf="@+id/text_pronounce_learning_example_sentence"
-            />
 
         <TextView
             android:id="@+id/text_pronounce_learning_rec"
@@ -93,8 +77,9 @@
             android:fontFamily="@font/notosanskr_bold"
             android:background="@drawable/rectangle_fill_dark_pink_radius_10"
             android:layout_marginBottom="25dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/text_pronounce_learning_example_sentence"
+            app:layout_constraintEnd_toEndOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

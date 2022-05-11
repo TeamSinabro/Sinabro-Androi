@@ -21,9 +21,9 @@ object PronounceMapper {
 
     fun mapperToPronounceData(responsePronouncePostData: ResponsePronounceData): PronouncePostData {
         return PronouncePostData(
-            request_id = responsePronouncePostData.request_id,
+
             result = responsePronouncePostData.result,
-            return_object = responsePronouncePostData.return_object
+
         )
     }
 }
