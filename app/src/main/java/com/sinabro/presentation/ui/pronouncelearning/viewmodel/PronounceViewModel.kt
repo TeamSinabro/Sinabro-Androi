@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.sinabro.domain.model.request.PronouncePostItem
 import com.sinabro.domain.model.response.PronouncePostData
 import com.sinabro.domain.usecase.PostPronounceDataUseCase
+import com.sinabro.shared.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -27,6 +28,8 @@ class PronounceViewModel @Inject constructor(
     val pronounceData : LiveData<PronouncePostData>
         get() = _pronounceData
 
+    //녹음중
+    var recording : MutableLiveData<Boolean> = MutableLiveData()
 
 
     //발음 평가 서버 통신
