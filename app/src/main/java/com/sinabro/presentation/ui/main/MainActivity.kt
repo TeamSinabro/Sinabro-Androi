@@ -10,13 +10,16 @@ import com.sinabro.presentation.ui.pronouncelearning.PronounceLearningActivity
 import com.sinabro.presentation.ui.subjectselect.SubjectSelectActivity
 import com.sinabro.presentation.ui.vocalearning.VocaLearningActivity
 import com.sinabro.presentation.ui.vocasearch.VocaSearchActivity
+import com.sinabro.shared.util.SinabroShareData
+import timber.log.Timber
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-
+    val sinabroShared = SinabroShareData
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         processGoView()
+        Timber.d("시나브로 데이터 ${sinabroShared.chapter} + ${sinabroShared.publisher} + ${sinabroShared.subject}")
 
     }
 

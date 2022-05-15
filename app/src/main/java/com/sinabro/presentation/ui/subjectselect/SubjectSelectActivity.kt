@@ -10,6 +10,7 @@ import com.sinabro.R
 import com.sinabro.databinding.ActivitySubjectSelectBinding
 import com.sinabro.presentation.base.BaseActivity
 import com.sinabro.presentation.ui.main.MainActivity
+import com.sinabro.shared.util.SinabroShareData
 
 
 class SubjectSelectActivity :
@@ -18,8 +19,9 @@ class SubjectSelectActivity :
         super.onCreate(savedInstanceState)
         initSpinner()
         clickOkBtn()
-        checkSpinnerItem(binding.spinnerSubjectSelect)
-        checkSpinnerItem(binding.spinnerSubjectSelectUnit)
+        checkSpinnerItem(binding.spinnerPublisherSelect, PUBLISHER)
+        checkSpinnerItem(binding.spinnerSubjectSelect,SUBJECT)
+        checkSpinnerItem(binding.spinnerChapterSelect,CHAPTER)
     }
 
     //스피너 생성
@@ -28,22 +30,33 @@ class SubjectSelectActivity :
             imgSpinnerSubjectSelectArrow.bringToFront()
             imgSpinnerSubjectSelectUnitArrow.bringToFront()
             spinnerSubjectSelect.adapter = ArrayAdapter.createFromResource(this@SubjectSelectActivity, R.array.subject_select, R.layout.item_spinner)
-            spinnerSubjectSelectUnit.adapter = ArrayAdapter.createFromResource(this@SubjectSelectActivity, R.array.subject_unit, R.layout.item_spinner)
+            spinnerChapterSelect.adapter = ArrayAdapter.createFromResource(this@SubjectSelectActivity, R.array.subject_unit, R.layout.item_spinner)
+            spinnerPublisherSelect.adapter = ArrayAdapter.createFromResource(this@SubjectSelectActivity, R.array.publisher_select, R.layout.item_spinner)
         }
 
     }
 
     //스피너 아이템 선택
-    private fun checkSpinnerItem(view: Spinner) {
-        view.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+    private fun checkSpinnerItem(views: Spinner, check : Int) {
+        views.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
                 id: Long
-            ) {
+            ) = when (check) {
+                PUBLISHER -> {
+                    SinabroShareData.publisher = views.getItemAtPosition(position).toString()
+                }
+                SUBJECT -> {
+                    SinabroShareData.subject = views.getItemAtPosition(position).toString()
+                }else ->{
+                    SinabroShareData.chapter = views.getItemAtPosition(position).toString().toInt()
+                }
+
 
             }
+
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -58,5 +71,13 @@ class SubjectSelectActivity :
             startActivity(intent)
             finish()
         }
+    }
+
+
+    companion object{
+        const val PUBLISHER = 0
+        const val SUBJECT = 1
+        const val CHAPTER = 2
+
     }
 }
