@@ -19,6 +19,10 @@ import com.sinabro.domain.model.request.PronouncePostItem
 import com.sinabro.presentation.base.BaseActivity
 import com.sinabro.presentation.ui.pronouncelearning.viewmodel.PronounceViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import okhttp3.internal.and
 import timber.log.Timber
 import java.util.*
@@ -41,7 +45,7 @@ class PronounceLearningActivity :
         initAudio()
         goAnswer()
         clickRecordBtn()
-        saveRecording()
+
         sendData()
     }
 
@@ -56,7 +60,7 @@ class PronounceLearningActivity :
     //녹음 버튼 클릭 이벤트
     private fun clickRecordBtn() {
         binding.textPronounceLearningRec.setOnClickListener {
-            pronounceViewModel.recording.value = true
+            saveRecording()
         }
 
         binding.textPronounceLearningRecStop.setOnClickListener {
@@ -93,36 +97,42 @@ class PronounceLearningActivity :
 
     //녹음 플로우
     private fun saveRecording() {
-        pronounceViewModel.recording.observe(this) {
-            Timber.d("record 중지")
-            if (it) {
-                audio.startRecording()
-            } else {
-                lenSpeech = 0
-                val inBuffer = ShortArray(bufferSize)
+        val job = CoroutineScope(Dispatchers.Default).launch {
+            audio.startRecording()
+            lenSpeech = 0
+            val inBuffer = ShortArray(bufferSize)
+            while(isActive){
                 val ret = audio.read(inBuffer, 0, bufferSize)
                 Timber.d("저장 $ret")
                 for (i in 0 until ret) {
-                        Timber.d("저장 계속 수행")
-                        if (lenSpeech >= maxLenSpeech) {
-                            forceStop = true
-                            break
-                        }
-                        speechData[lenSpeech * 2] = (inBuffer[i] and 0x00FF).toByte()
-                        speechData[lenSpeech * 2 + 1] = ((inBuffer[i] and 0xFF00 shr 8).toByte())
-                        lenSpeech++
+                    Timber.d("저장 계속 수행")
+                    if (lenSpeech >= maxLenSpeech) {
+                        forceStop = true
+                        break
                     }
-                Timber.d("저장 종료")
-                audio.stop()
-                audio.release()
+                    speechData[lenSpeech * 2 + 1] = ((inBuffer[i] and 0xFF00 shr 8).toByte())
+                    lenSpeech++
+                }
+            }
+            Timber.d("저장 종료")
+            audio.stop()
+            audio.release()
+        }
+        pronounceViewModel.recording.observe(this){
+            if(it){
+                job.start()
+            }else{
+                job.cancel()
+                postPronounce()
             }
         }
+
     }
+
 
     //녹음 중지
     private fun stopRecording() {
         pronounceViewModel.recording.value = false
-        postPronounce()
     }
 
     //평가 서버 통신
@@ -144,10 +154,10 @@ class PronounceLearningActivity :
     }
 
     //점수 데이터 넘겨 주기
-    private fun sendData(){
-        pronounceViewModel.pronounceData.observe(this){
+    private fun sendData() {
+        pronounceViewModel.pronounceData.observe(this) {
             val intent = Intent(this, PronounceLearningAnswerActivity::class.java)
-            intent.putExtra("pronounceScore", it.result.toString())
+            intent.putExtra("pronounceScore", it.score.toString())
             startActivity(intent)
             finish()
         }
