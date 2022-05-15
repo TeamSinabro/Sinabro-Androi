@@ -10,14 +10,20 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+
     @Provides
     fun pronounceBaseUrl() = "http://aiopen.etri.re.kr:8000/"
+
+
+    @Provides
+    fun SinabroBaseUrl() = "localhost:8080/voca/"
 
     @Singleton
     @Provides
@@ -31,6 +37,7 @@ object NetworkModule {
             OkHttpClient.Builder().build()
         }
 
+    @PronounceBaseRetrofit
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit{
@@ -41,7 +48,24 @@ object NetworkModule {
             .build()
     }
 
+    @SinabroBaseRetrofit
+    @Singleton
+    @Provides
+    fun provideBaseRetrofit(okHttpClient: OkHttpClient) : Retrofit{
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl(SinabroBaseUrl())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 
 
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class PronounceBaseRetrofit
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class SinabroBaseRetrofit
 
 }

@@ -6,7 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sinabro.domain.model.request.PronouncePostItem
+import com.sinabro.domain.model.response.PronounceGetSentenceData
 import com.sinabro.domain.model.response.PronouncePostData
+import com.sinabro.domain.usecase.GetPronounceSentenceDataUseCase
 import com.sinabro.domain.usecase.PostPronounceDataUseCase
 import com.sinabro.shared.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PronounceViewModel @Inject constructor(
-    private val postPronounceDataUseClass: PostPronounceDataUseCase
+    private val postPronounceDataUseClass: PostPronounceDataUseCase,
+    private val getPronounceSentenceDataUseCase: GetPronounceSentenceDataUseCase
 )  : ViewModel() {
 
     var audionContents : MutableLiveData<String> = MutableLiveData()
@@ -32,6 +35,11 @@ class PronounceViewModel @Inject constructor(
     var recording : MutableLiveData<Boolean> = MutableLiveData()
 
 
+    //발음 평가 문제
+    private var _pronounceSentence : MutableLiveData<PronounceGetSentenceData> = MutableLiveData()
+    val pronounceSentence : LiveData<PronounceGetSentenceData>
+        get() = _pronounceSentence
+
     //발음 평가 서버 통신
      fun postPronounce(pronouncePostItem: PronouncePostItem){
         viewModelScope.launch {
@@ -45,5 +53,21 @@ class PronounceViewModel @Inject constructor(
                     Timber.d("pronounce 데이터 통신 실패!")
                 }
         }
+    }
+
+    //발음 평가 문제 서버 통신
+    fun getPronounceSentence(publisher : String, subject : String, chapter : Int){
+        viewModelScope.launch {
+            runCatching { getPronounceSentenceDataUseCase(publisher, subject, chapter) }
+                .onSuccess {
+                    _pronounceSentence.value = it
+                    Timber.d("pronounce 문제 통신 성공!")
+                }
+                .onFailure {
+                    Timber.d("pronounce 문제 통신 실패!")
+                }
+        }
+
+
     }
 }

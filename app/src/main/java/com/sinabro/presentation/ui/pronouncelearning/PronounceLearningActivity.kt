@@ -18,6 +18,7 @@ import com.sinabro.databinding.ActivityPronounceLearningBinding
 import com.sinabro.domain.model.request.PronouncePostItem
 import com.sinabro.presentation.base.BaseActivity
 import com.sinabro.presentation.ui.pronouncelearning.viewmodel.PronounceViewModel
+import com.sinabro.shared.util.SinabroShareData
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -42,6 +43,8 @@ class PronounceLearningActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initPronounceSentence()
+        setPronounceSentence()
         initAudio()
         goAnswer()
         clickRecordBtn()
@@ -67,6 +70,21 @@ class PronounceLearningActivity :
             stopRecording()
         }
     }
+    //발음 평가 문제 서버통신
+    private fun initPronounceSentence(){
+        val sinabroData = SinabroShareData
+        pronounceViewModel.getPronounceSentence(sinabroData.publisher, sinabroData.subject, sinabroData.chapter)
+    }
+
+    //문제 갱신
+    private fun setPronounceSentence(){
+        pronounceViewModel.pronounceSentence.observe(this){
+            binding.textPronounceLearningExampleSentence.text = it.problem
+        }
+
+
+    }
+
 
     //audio 초기화
     private fun initAudio() {
@@ -147,7 +165,7 @@ class PronounceLearningActivity :
             PronouncePostItem(
                 "c2848d62-dd79-4f12-bdbe-2288528d5669",
                 "korean",
-                "이것은 발음 평가 연습",
+                pronounceViewModel.pronounceSentence.value?.problem ?: "",
                 audioContent
             )
         )
