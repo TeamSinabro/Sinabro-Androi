@@ -8,11 +8,8 @@ import android.media.AudioRecord
 import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
-import android.util.Base64.NO_WRAP
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.sinabro.R
 import com.sinabro.databinding.ActivityPronounceLearningBinding
 import com.sinabro.domain.model.request.PronouncePostItem
@@ -73,7 +70,9 @@ class PronounceLearningActivity :
     //발음 평가 문제 서버통신
     private fun initPronounceSentence(){
         val sinabroData = SinabroShareData
-        pronounceViewModel.getPronounceSentence(sinabroData.publisher, sinabroData.subject, sinabroData.chapter)
+        Timber.d("문제 서버  통신 실행")
+        Timber.d("문제 서버 ${sinabroData.publisher}")
+        pronounceViewModel.getPronounceSentence("지학사", "사회", sinabroData.chapter)
     }
 
     //문제 갱신

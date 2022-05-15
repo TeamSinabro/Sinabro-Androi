@@ -64,6 +64,7 @@ class PronounceViewModel @Inject constructor(
                     Timber.d("pronounce 문제 통신 성공!")
                 }
                 .onFailure {
+                    it.printStackTrace()
                     Timber.d("pronounce 문제 통신 실패!")
                 }
         }

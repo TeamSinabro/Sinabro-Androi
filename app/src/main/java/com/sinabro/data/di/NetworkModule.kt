@@ -23,7 +23,7 @@ object NetworkModule {
 
 
     @Provides
-    fun SinabroBaseUrl() = "localhost:8080/voca/"
+    fun SinabroBaseUrl() = "http://192.168.25.46:8080/"
 
     @Singleton
     @Provides

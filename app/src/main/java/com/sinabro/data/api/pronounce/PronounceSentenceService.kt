@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface PronounceSentenceService {
 
-    @GET("/pronunciation")
+    @GET("/voca/pronunciation")
     suspend fun getPronunciationSentence(
         @Query("publisher") publisher : String,
         @Query("subject") subject : String,
