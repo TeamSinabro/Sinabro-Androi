@@ -3,14 +3,20 @@
     
     <string-array name="subject_select">
         <item>사회</item>
-        <item>과학</item>
-        <item>국어</item>
+    </string-array>
+
+    <string-array name="publisher_select">
+        <item>지학사</item>
     </string-array>
 
     <string-array name="subject_unit">
         <item>1단원</item>
         <item>2단원</item>
         <item>3단원</item>
+        <item>4단원</item>
+        <item>5단원</item>
+        <item>6단원</item>
+        <item>7단원</item>
     </string-array>
 
 </resources>
