@@ -11,7 +11,7 @@ class PronounceRepositoryImpl @Inject constructor(
     private val pronounceDataSource: PronounceDataSource
 ) : PronounceRepository {
     override suspend fun postPronounce(pronouncePostItem: PronouncePostItem): PronouncePostData {
-        return PronounceMapper.mapperToPronounceData(
+            return PronounceMapper.mapperToPronounceData(
             pronounceDataSource.postPronounce(PronounceMapper.mapperToPronounceItem(
                 pronouncePostItem
             ))
