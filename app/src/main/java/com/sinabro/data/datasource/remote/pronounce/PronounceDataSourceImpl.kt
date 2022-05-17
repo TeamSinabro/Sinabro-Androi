@@ -2,7 +2,7 @@ package com.sinabro.data.datasource.remote.pronounce
 
 import com.sinabro.data.api.pronounce.PronounceService
 import com.sinabro.data.model.request.RequestPronounceData
-import com.sinabro.data.model.response.ResponsePronounceData
+import com.sinabro.data.model.response.pronounce.ResponsePronounceData
 import javax.inject.Inject
 
 class PronounceDataSourceImpl @Inject constructor(

@@ -1,11 +1,11 @@
 package com.sinabro.data.mapper
 
 import com.sinabro.data.model.request.RequestPronounceData
-import com.sinabro.data.model.response.ResponsePronounceData
-import com.sinabro.data.model.response.ResponsePronounceSentenceData
+import com.sinabro.data.model.response.pronounce.ResponsePronounceData
+import com.sinabro.data.model.response.pronounce.ResponsePronounceSentenceData
 import com.sinabro.domain.model.request.PronouncePostItem
-import com.sinabro.domain.model.response.PronounceGetSentenceData
-import com.sinabro.domain.model.response.PronouncePostData
+import com.sinabro.domain.model.response.pronounce.PronounceGetSentenceData
+import com.sinabro.domain.model.response.pronounce.PronouncePostData
 
 object PronounceMapper {
 
@@ -28,7 +28,7 @@ object PronounceMapper {
     }
 
     //발음 평가 문제 가져오기
-    fun mapperToPronounceSentenceData(responsePronounceSentenceData : ResponsePronounceSentenceData) : PronounceGetSentenceData{
+    fun mapperToPronounceSentenceData(responsePronounceSentenceData : ResponsePronounceSentenceData) : PronounceGetSentenceData {
         return PronounceGetSentenceData(
             problem = responsePronounceSentenceData.data.problem
         )

@@ -2,7 +2,7 @@ package com.sinabro.data.repositoryimpl.pronounce
 
 import com.sinabro.data.datasource.remote.pronounce.PronounceSentenceDataSource
 import com.sinabro.data.mapper.PronounceMapper
-import com.sinabro.domain.model.response.PronounceGetSentenceData
+import com.sinabro.domain.model.response.pronounce.PronounceGetSentenceData
 import com.sinabro.domain.repository.pronounce.PronounceSentenceRepository
 import javax.inject.Inject
 

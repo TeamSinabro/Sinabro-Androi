@@ -1,4 +1,4 @@
-package com.sinabro.data.model.response
+package com.sinabro.data.model.response.pronounce
 
 data class ResponsePronounceData(
     val request_id : String,

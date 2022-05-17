@@ -1,6 +1,6 @@
 package com.sinabro.data.api.pronounce
 
-import com.sinabro.data.model.response.ResponsePronounceSentenceData
+import com.sinabro.data.model.response.pronounce.ResponsePronounceSentenceData
 import retrofit2.http.GET
 import retrofit2.http.Query
 

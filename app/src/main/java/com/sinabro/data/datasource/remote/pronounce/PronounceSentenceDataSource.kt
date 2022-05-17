@@ -1,6 +1,6 @@
 package com.sinabro.data.datasource.remote.pronounce
 
-import com.sinabro.data.model.response.ResponsePronounceSentenceData
+import com.sinabro.data.model.response.pronounce.ResponsePronounceSentenceData
 
 interface PronounceSentenceDataSource {
 

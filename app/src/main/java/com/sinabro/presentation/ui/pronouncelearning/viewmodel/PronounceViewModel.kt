@@ -1,16 +1,14 @@
 package com.sinabro.presentation.ui.pronouncelearning.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sinabro.domain.model.request.PronouncePostItem
-import com.sinabro.domain.model.response.PronounceGetSentenceData
-import com.sinabro.domain.model.response.PronouncePostData
+import com.sinabro.domain.model.response.pronounce.PronounceGetSentenceData
+import com.sinabro.domain.model.response.pronounce.PronouncePostData
 import com.sinabro.domain.usecase.GetPronounceSentenceDataUseCase
 import com.sinabro.domain.usecase.PostPronounceDataUseCase
-import com.sinabro.shared.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber

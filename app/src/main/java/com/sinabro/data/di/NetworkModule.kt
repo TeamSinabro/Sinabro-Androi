@@ -23,7 +23,7 @@ object NetworkModule {
 
 
     @Provides
-    fun SinabroBaseUrl() = "http://192.168.25.46:8080/"
+    fun SinabroBaseUrl() = "http://192.168.25.59:8080/"
 
     @Singleton
     @Provides

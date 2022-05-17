@@ -1,6 +1,6 @@
 package com.sinabro.domain.repository.pronounce
 
-import com.sinabro.domain.model.response.PronounceGetSentenceData
+import com.sinabro.domain.model.response.pronounce.PronounceGetSentenceData
 
 interface PronounceSentenceRepository {
 
