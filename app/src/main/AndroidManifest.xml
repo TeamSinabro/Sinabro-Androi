@@ -23,6 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.vocasearch.VocaSearchActivity"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.vocalearning.VocaLearningActivity"

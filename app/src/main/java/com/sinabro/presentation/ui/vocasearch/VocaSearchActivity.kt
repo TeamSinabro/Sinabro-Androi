@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class VocaSearchActivity : BaseActivity<ActivityVocaSearchBinding>(R.layout.activity_voca_search) {
-
+    private lateinit var vocaSearchAdapter : VocaSearchAdapter
     private val vocaSearchviewModel: VocaSearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +43,11 @@ class VocaSearchActivity : BaseActivity<ActivityVocaSearchBinding>(R.layout.acti
             vocaSearchviewModel.vocaSearchData.observe(this){
                 binding.vocaSearchData = it
                 vocaSearchviewModel.event.value = true
+                vocaSearchAdapter = VocaSearchAdapter()
+                binding.rcVocaSearchSentence.adapter = vocaSearchAdapter
+                vocaSearchAdapter.setVocaSearchData(
+                it.sentence as MutableList<String>, it.keywordSource as MutableList<String>
+                )
             }
         }
     }
