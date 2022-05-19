@@ -7,7 +7,7 @@ data class ResponseVocaSearchData(
     val success: Boolean
 ) {
     data class Data(
-        val keywordSource: String,
+        val keywordSource : List<String>,
         val sentence: List<String>,
         val vocaDefinition: List<String>
     )
