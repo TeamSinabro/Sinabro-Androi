@@ -1,4 +1,4 @@
-package com.sinabro.domain.usecase
+package com.sinabro.domain.usecase.pronounce
 
 import com.sinabro.domain.model.request.PronouncePostItem
 import com.sinabro.domain.model.response.pronounce.PronouncePostData

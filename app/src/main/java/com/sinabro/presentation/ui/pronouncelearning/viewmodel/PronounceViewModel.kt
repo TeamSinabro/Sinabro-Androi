@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.sinabro.domain.model.request.PronouncePostItem
 import com.sinabro.domain.model.response.pronounce.PronounceGetSentenceData
 import com.sinabro.domain.model.response.pronounce.PronouncePostData
-import com.sinabro.domain.usecase.GetPronounceSentenceDataUseCase
-import com.sinabro.domain.usecase.PostPronounceDataUseCase
+import com.sinabro.domain.usecase.pronounce.GetPronounceSentenceDataUseCase
+import com.sinabro.domain.usecase.pronounce.PostPronounceDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
