@@ -1,6 +1,5 @@
 package com.sinabro.presentation.ui.vocasearch
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.sinabro.R
@@ -8,26 +7,60 @@ import com.sinabro.databinding.ActivityVocaSearchBinding
 import com.sinabro.presentation.base.BaseActivity
 import com.sinabro.presentation.ui.vocasearch.viewmodel.VocaSearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class VocaSearchActivity : BaseActivity<ActivityVocaSearchBinding>(R.layout.activity_voca_search) {
 
-    private val vocaSearchviewModel : VocaSearchViewModel by viewModels()
+    private val vocaSearchviewModel: VocaSearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initView()
+        clickSearchBtn()
         goMain()
+        clickVocaDefinition()
+        checkEvent()
     }
 
     //메인 이동
-    private fun goMain(){
+    private fun goMain() {
         binding.textVocaSearchOk.setOnClickListener {
             finish()
         }
     }
 
+    private fun initView(){
+        binding.vocaSearchViewModel = vocaSearchviewModel
+    }
+    //검색 버튼 클릭
+    private fun clickSearchBtn() {
+        binding.textVocaSearch.setOnClickListener {
+            val text = binding.etVocaSearch.text.toString()
+            with(vocaSearchviewModel){
+                getVocaSearchData(text)
+                setVocaSearchTextEvent(false)
+            }
+            vocaSearchviewModel.vocaSearchData.observe(this){
+                binding.vocaSearchData = it
+                vocaSearchviewModel.event.value = true
+            }
+        }
+    }
 
+    //단어 정의 클릭
+    private fun clickVocaDefinition() {
+        binding.textVocaDefinitionTitle.setOnClickListener {
+            val textEvent = vocaSearchviewModel.vocaSearchTextEvent.value ?: true
+            vocaSearchviewModel.setVocaSearchTextEvent(!textEvent)
+            vocaSearchviewModel.event.value = true
+        }
+    }
 
+    //클릭시 이벤트
+    private fun checkEvent(){
+        vocaSearchviewModel.event.observe(this){
+            binding.vocaSearchViewModel = vocaSearchviewModel
+        }
+
+    }
 }

@@ -7,6 +7,12 @@
         <variable
             name="vocaSearchData"
             type="com.sinabro.domain.model.response.vocasearch.VocaSearchData" />
+
+        <variable
+            name="vocaSearchViewModel"
+            type="com.sinabro.presentation.ui.vocasearch.viewmodel.VocaSearchViewModel" />
+
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +67,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_voca_definition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/et_voca_search"
+            android:layout_marginTop="43dp"
+            >
         <TextView
             android:id="@+id/text_voca_definition_title"
             android:layout_width="0dp"
@@ -72,29 +84,30 @@
             android:textColor="@color/black"
             android:fontFamily="@font/notosanskr_bold"
             android:background="@drawable/rectangle_fill_sinabro_gray_radius_5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:drawableEnd="@drawable/ic_arrow_black_end"
             android:paddingHorizontal="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/et_voca_search"
-            app:layout_constraintStart_toStartOf="@+id/et_voca_search"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="21dp"
-            android:layout_marginTop="43dp"/>
+            android:layout_marginStart="21dp"
+            />
         <TextView
             android:id="@+id/text_voca_definition"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:textSize="15sp"
+            android:visibility="@{vocaSearchViewModel.vocaSearchTextEvent ? View.GONE : View.VISIBLE}"
+            listToText="@{vocaSearchData.sentence}"
             android:textColor="@color/black"
             android:fontFamily="@font/notosanskr_bold"
-            android:visibility="invisible"
-            android:background="@drawable/rectangle_fill_sinabro_gray_radius_5"
+            android:padding="10dp"
+            android:background="@drawable/rectangle_fill_white_radius_5"
             app:layout_constraintTop_toBottomOf="@+id/text_voca_definition_title"
-            app:layout_constraintStart_toStartOf="@+id/et_voca_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="21dp"/>
+            app:layout_constraintStart_toStartOf="@+id/text_voca_definition_title"
+            app:layout_constraintEnd_toEndOf="@+id/text_voca_definition_title" />
 
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:id="@+id/text_voca_sentence"
             android:layout_width="0dp"
@@ -105,10 +118,9 @@
             android:textColor="@color/black"
             android:fontFamily="@font/notosanskr_bold"
             android:background="@drawable/rectangle_fill_sinabro_gray_radius_5"
-            app:layout_constraintTop_toBottomOf="@+id/text_voca_definition"
-            app:layout_constraintStart_toStartOf="@+id/text_voca_definition"
-            app:layout_constraintEnd_toEndOf="@+id/text_voca_definition"
-            android:layout_marginTop="43dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/cl_voca_definition"
+            app:layout_constraintStart_toStartOf="@+id/cl_voca_definition"
+            app:layout_constraintEnd_toEndOf="@+id/cl_voca_definition"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

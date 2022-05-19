@@ -21,9 +21,9 @@ object NetworkModule {
     @Provides
     fun pronounceBaseUrl() = "http://aiopen.etri.re.kr:8000/"
 
-
+    //localhost 연결시 무선 LAN 어댑터 ipv4 받아와야함 :8080
     @Provides
-    fun SinabroBaseUrl() = "http://3.39.200.2/"
+    fun SinabroBaseUrl() = "http://192.168.1.10:8080/"
 
     @Singleton
     @Provides
