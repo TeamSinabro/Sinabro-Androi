@@ -73,19 +73,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/text_voca_search_ok"
             app:layout_constraintTop_toBottomOf="@+id/et_voca_search">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="43dp">
+                android:layout_height="wrap_content">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_voca_definition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="43dp"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
@@ -130,6 +131,8 @@
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
                     android:orientation="vertical"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginBottom="10dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
