@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
@@ -23,7 +24,7 @@ object NetworkModule {
 
     //localhost 연결시 무선 LAN 어댑터 ipv4 받아와야함 :8080
     @Provides
-    fun SinabroBaseUrl() = "http://192.168.1.10:8080/"
+    fun SinabroBaseUrl() = "http://172.30.1.51:8080/"
 
     @Singleton
     @Provides

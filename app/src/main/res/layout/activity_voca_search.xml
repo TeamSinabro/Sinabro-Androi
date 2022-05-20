@@ -109,7 +109,7 @@
 
                     <TextView
                         android:id="@+id/text_voca_definition"
-                        listToText="@{vocaSearchData.sentence}"
+                        listToText="@{vocaSearchData.vocaDefinition}"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle_fill_white_radius_5"
