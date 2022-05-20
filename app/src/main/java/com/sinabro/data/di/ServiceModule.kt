@@ -3,6 +3,7 @@ package com.sinabro.data.di
 import com.sinabro.data.api.*
 import com.sinabro.data.api.pronounce.PronounceSentenceService
 import com.sinabro.data.api.pronounce.PronounceService
+import com.sinabro.data.api.vocalearning.VocaLearningService
 import com.sinabro.data.api.vocasearch.VocaSearchService
 import dagger.Module
 import dagger.Provides
@@ -33,5 +34,11 @@ object ServiceModule {
     @Provides
     fun vocaSearchService(@NetworkModule.SinabroBaseRetrofit retrofit : Retrofit) : VocaSearchService{
         return retrofit.create(VocaSearchService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun vocaLearningService(@NetworkModule.SinabroBaseRetrofit retrofit : Retrofit)  : VocaLearningService{
+        return retrofit.create(VocaLearningService::class.java)
     }
 }

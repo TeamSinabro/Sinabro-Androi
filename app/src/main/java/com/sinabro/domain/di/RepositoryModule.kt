@@ -2,12 +2,15 @@ package com.sinabro.domain.di
 
 import com.sinabro.data.datasource.remote.pronounce.PronounceDataSource
 import com.sinabro.data.datasource.remote.pronounce.PronounceSentenceDataSource
+import com.sinabro.data.datasource.remote.vocalearning.VocaLearningDataSource
 import com.sinabro.data.datasource.remote.vocasearch.VocaSearchDataSource
 import com.sinabro.data.repositoryimpl.pronounce.PronounceRepositoryImpl
 import com.sinabro.data.repositoryimpl.pronounce.PronounceSentenceRepositoryImpl
+import com.sinabro.data.repositoryimpl.vocalearning.VocaLearningRepositoryImpl
 import com.sinabro.data.repositoryimpl.vocasearch.VocaSearchRepositoryImpl
 import com.sinabro.domain.repository.pronounce.PronounceRepository
 import com.sinabro.domain.repository.pronounce.PronounceSentenceRepository
+import com.sinabro.domain.repository.vocalearning.VocaLearningRepository
 import com.sinabro.domain.repository.vocasearch.VocaSearchRepository
 import dagger.Module
 import dagger.Provides
@@ -42,5 +45,13 @@ object RepositoryModule {
         vocaSearchDataSource: VocaSearchDataSource
     ) : VocaSearchRepository{
         return VocaSearchRepositoryImpl(vocaSearchDataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun vocaLearningRepository(
+        vocaLearningDataSource: VocaLearningDataSource
+    ) : VocaLearningRepository{
+        return VocaLearningRepositoryImpl(vocaLearningDataSource)
     }
 }
