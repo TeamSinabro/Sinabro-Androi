@@ -22,7 +22,7 @@ class VocaLearningViewModel @Inject constructor(
         get() = _vocaLearningData
 
 
-    suspend fun getVocaLearningData(publisher : String, subject : String, chapter : Int){
+     fun getVocaLearningData(publisher : String, subject : String, chapter : Int){
         viewModelScope.launch {
             runCatching { getVocaLearningDataUseCase(publisher, subject, chapter) }
                 .onSuccess {

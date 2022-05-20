@@ -17,8 +17,9 @@
         <TextView
             android:id="@+id/text_example_sentence"
             android:layout_width="0dp"
-            android:layout_height="90dp"
-            android:text="@string/example_sentence"
+            android:layout_height="wrap_content"
+            sentence="@{vocaGetLearningData.problem}"
+            answer="@{vocaGetLearningData.answer}"
             android:gravity="center"
             android:textSize="15sp"
             android:textColor="@color/black"
