@@ -28,6 +28,5 @@ class VocaLearningActivity : BaseActivity<ActivityVocaLearningBinding>(R.layout.
             startActivity(intent)
             finish()
         }
-
     }
 }
