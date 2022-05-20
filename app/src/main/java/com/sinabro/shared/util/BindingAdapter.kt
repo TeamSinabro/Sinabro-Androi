@@ -16,8 +16,8 @@ object BindingAdapter {
 
     //정답 밑줄로 만들기
     @JvmStatic
-    @BindingAdapter("sentence", "answer", requireAll = false)
-    fun printProblem(textView: TextView, sentence : String, answer : String) : String{
-        return sentence.replace(answer, "____").also { textView.text = it }
+    @BindingAdapter("problem", "answer", requireAll = false)
+    fun printProblem(textView: TextView, problem : String?, answer : String?) : String{
+            return problem?.replace(answer.toString(), "____").also { textView.text = it } ?: ""
     }
 }
