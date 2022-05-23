@@ -16,7 +16,7 @@
             android:id="@+id/checkbox_problem_one"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{vocaLearningData}"
+            android:text="@{vocaLearning}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
