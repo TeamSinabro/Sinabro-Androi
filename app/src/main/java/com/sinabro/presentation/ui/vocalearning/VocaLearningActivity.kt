@@ -8,6 +8,7 @@ import com.sinabro.R
 import com.sinabro.databinding.ActivityVocaLearningBinding
 import com.sinabro.databinding.ActivityVocaSearchBinding
 import com.sinabro.presentation.base.BaseActivity
+import com.sinabro.presentation.ui.vocalearning.adapter.VocaLearningAdapter
 import com.sinabro.presentation.ui.vocalearning.viewmodel.VocaLearningViewModel
 import com.sinabro.shared.util.SinabroShareData
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,8 +16,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @AndroidEntryPoint
 class VocaLearningActivity : BaseActivity<ActivityVocaLearningBinding>(R.layout.activity_voca_learning) {
-
     private val vocaLearningViewModel : VocaLearningViewModel by viewModels()
+    private lateinit var vocaLearningAdapter : VocaLearningAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
@@ -35,10 +38,12 @@ class VocaLearningActivity : BaseActivity<ActivityVocaLearningBinding>(R.layout.
     //데이터 받아오기
     private fun initView(){
         val data = SinabroShareData
+        vocaLearningAdapter = VocaLearningAdapter()
+        binding.rcVocaLearning.adapter = vocaLearningAdapter
         vocaLearningViewModel.getVocaLearningData(data.publisher,data.subject,data.chapter)
         vocaLearningViewModel.vocaLearningData.observe(this){
+            vocaLearningAdapter.setVocaLearning(it.optionList as MutableList<String>)
             binding.vocaGetLearningData = it
         }
-
     }
 }
