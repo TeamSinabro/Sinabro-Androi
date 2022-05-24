@@ -46,6 +46,7 @@ class VocaLearningAnswerActivity : BaseActivity<ActivityVocaLearningAnswerBindin
              val intent = Intent(this, VocaLearningActivity::class.java)
              startActivity(intent)
              SinabroShareData.answerNum += 1
+             finish()
          }else{
              finish()
          }

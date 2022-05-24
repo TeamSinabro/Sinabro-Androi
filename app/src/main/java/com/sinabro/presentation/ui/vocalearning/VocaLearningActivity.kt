@@ -4,12 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.MutableLiveData
 import com.sinabro.R
 import com.sinabro.databinding.ActivityVocaLearningBinding
 import com.sinabro.databinding.ActivityVocaSearchBinding
 import com.sinabro.presentation.base.BaseActivity
+import com.sinabro.presentation.base.LoadedViewModel
 import com.sinabro.presentation.ui.vocalearning.adapter.VocaLearningAdapter
 import com.sinabro.presentation.ui.vocalearning.viewmodel.VocaLearningViewModel
+import com.sinabro.shared.util.CustomDialog
 import com.sinabro.shared.util.SinabroShareData
 import dagger.hilt.android.AndroidEntryPoint
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,6 +31,7 @@ class VocaLearningActivity :
         goAnswer()
         answerCheck()
         clickAnswerCheck()
+        checkLoading()
     }
 
     //정답 확인
@@ -43,6 +48,7 @@ class VocaLearningActivity :
         val data = SinabroShareData
         vocaLearningAdapter = VocaLearningAdapter()
         binding.rcVocaLearning.adapter = vocaLearningAdapter
+        showLoading()
         vocaLearningViewModel.getVocaLearningData(data.publisher, data.subject, data.chapter)
         vocaLearningViewModel.vocaLearningData.observe(this) {
             vocaLearningAdapter.setVocaLearning(it.optionList as MutableList<String>)
@@ -71,4 +77,13 @@ class VocaLearningActivity :
             finish()
         }
     }
+
+    //로딩바
+    private fun checkLoading(){
+        vocaLearningViewModel.onLoadingEnd.observe(this){
+            dismissLoading()
+        }
+    }
+
+
 }
