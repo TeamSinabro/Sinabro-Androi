@@ -6,16 +6,22 @@
         <variable
             name="vocaLearning"
             type="String" />
+
+        <variable
+            name="vocaLearningChecked"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="20dp">
 
         <CheckBox
-            android:id="@+id/checkbox_problem_one"
+            android:id="@+id/checkbox_problem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:checked="@{vocaLearningChecked}"
             android:text="@{vocaLearning}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

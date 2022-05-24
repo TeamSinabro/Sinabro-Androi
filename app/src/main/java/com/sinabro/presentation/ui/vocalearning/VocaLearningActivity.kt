@@ -46,4 +46,7 @@ class VocaLearningActivity : BaseActivity<ActivityVocaLearningBinding>(R.layout.
             binding.vocaGetLearningData = it
         }
     }
+
+    //정답 확인
+    
 }
