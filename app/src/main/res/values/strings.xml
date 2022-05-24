@@ -30,4 +30,8 @@
     <string name="save">저장 및 점수확인</string>
     <string name="file_upload">파일 업로드 및 점수 확인</string>
 
+    <!-- 어휘학습-->
+    <string name="right">정답입니다!</string>
+    <string name="fail">틀렸습니다!</string>
+
 </resources>
