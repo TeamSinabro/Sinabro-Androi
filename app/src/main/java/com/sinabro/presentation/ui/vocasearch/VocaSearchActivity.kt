@@ -20,6 +20,7 @@ class VocaSearchActivity : BaseActivity<ActivityVocaSearchBinding>(R.layout.acti
         goMain()
         clickVocaDefinition()
         checkEvent()
+        checkLoading()
     }
 
     //메인 이동
@@ -36,6 +37,7 @@ class VocaSearchActivity : BaseActivity<ActivityVocaSearchBinding>(R.layout.acti
     private fun clickSearchBtn() {
         binding.textVocaSearch.setOnClickListener {
             val text = binding.etVocaSearch.text.toString()
+            showLoading()
             with(vocaSearchviewModel){
                 getVocaSearchData(text)
                 setVocaSearchTextEvent(false)
@@ -66,6 +68,12 @@ class VocaSearchActivity : BaseActivity<ActivityVocaSearchBinding>(R.layout.acti
         vocaSearchviewModel.event.observe(this){
             binding.vocaSearchViewModel = vocaSearchviewModel
         }
+    }
 
+    //로딩 종료
+    private fun checkLoading(){
+        vocaSearchviewModel.onLoadingEnd.observe(this){
+            dismissLoading()
+        }
     }
 }

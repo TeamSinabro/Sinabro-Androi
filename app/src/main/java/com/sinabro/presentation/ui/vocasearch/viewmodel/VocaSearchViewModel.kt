@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sinabro.domain.model.response.vocasearch.VocaSearchData
 import com.sinabro.domain.usecase.vocasearch.GetVocaSearchDataUseCase
+import com.sinabro.presentation.base.LoadedViewModel
 import com.sinabro.shared.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class VocaSearchViewModel @Inject constructor(
     private val getVocaSearchDataUseCase: GetVocaSearchDataUseCase
-) : ViewModel() {
+) : ViewModel(), LoadedViewModel {
 
     //검색 결과 데이터
     private var _vocaSearchData : MutableLiveData<VocaSearchData> = MutableLiveData()
@@ -45,8 +46,12 @@ class VocaSearchViewModel @Inject constructor(
                 .onFailure {
                     Timber.d("검색 데이터 받아오기 실패")
                 }
+                .also {
+                    onLoadingEnd.value = true
+                }
         }
-
-
     }
+
+    override val onLoadingEnd = MutableLiveData<Boolean>()
+
 }
