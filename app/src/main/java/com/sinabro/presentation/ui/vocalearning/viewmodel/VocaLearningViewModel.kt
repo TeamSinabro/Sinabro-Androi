@@ -21,6 +21,7 @@ class VocaLearningViewModel @Inject constructor(
     val vocaLearningData : LiveData<VocaGetLearningData>
         get() = _vocaLearningData
 
+    var answerCheck : MutableLiveData<Boolean> = MutableLiveData()
 
      fun getVocaLearningData(publisher : String, subject : String, chapter : Int){
         viewModelScope.launch {

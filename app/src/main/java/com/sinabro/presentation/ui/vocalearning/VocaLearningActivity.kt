@@ -15,19 +15,22 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @AndroidEntryPoint
-class VocaLearningActivity : BaseActivity<ActivityVocaLearningBinding>(R.layout.activity_voca_learning) {
-    private val vocaLearningViewModel : VocaLearningViewModel by viewModels()
-    private lateinit var vocaLearningAdapter : VocaLearningAdapter
+class VocaLearningActivity :
+    BaseActivity<ActivityVocaLearningBinding>(R.layout.activity_voca_learning) {
+    private val vocaLearningViewModel: VocaLearningViewModel by viewModels()
+    private lateinit var vocaLearningAdapter: VocaLearningAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
         goAnswer()
+        answerCheck()
+        clickAnswerCheck()
     }
 
     //정답 확인
-    private fun goAnswer(){
+    private fun goAnswer() {
         binding.textVocaLearningOk.setOnClickListener {
             val intent = Intent(this, VocaLearningAnswerActivity::class.java)
             startActivity(intent)
@@ -36,17 +39,31 @@ class VocaLearningActivity : BaseActivity<ActivityVocaLearningBinding>(R.layout.
     }
 
     //데이터 받아오기
-    private fun initView(){
+    private fun initView() {
         val data = SinabroShareData
         vocaLearningAdapter = VocaLearningAdapter()
         binding.rcVocaLearning.adapter = vocaLearningAdapter
-        vocaLearningViewModel.getVocaLearningData(data.publisher,data.subject,data.chapter)
-        vocaLearningViewModel.vocaLearningData.observe(this){
+        vocaLearningViewModel.getVocaLearningData(data.publisher, data.subject, data.chapter)
+        vocaLearningViewModel.vocaLearningData.observe(this) {
             vocaLearningAdapter.setVocaLearning(it.optionList as MutableList<String>)
             binding.vocaGetLearningData = it
         }
     }
 
-    //정답 확인
-    
+    //정답체크
+    private fun answerCheck() {
+        vocaLearningAdapter.setOnItemClickListener { i ->
+            vocaLearningViewModel.answerCheck.value = i == vocaLearningViewModel.vocaLearningData.value?.answer
+        }
+    }
+
+    //정답 확인 버튼 클릭
+    private fun clickAnswerCheck(){
+        binding.textVocaLearningOk.setOnClickListener {
+            val answer = vocaLearningViewModel.answerCheck.value
+            val intent = Intent(this, VocaLearningAnswerActivity::class.java)
+            intent.putExtra("answer", answer)
+            startActivity(intent)
+        }
+    }
 }

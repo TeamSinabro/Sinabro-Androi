@@ -21,5 +21,6 @@ class VocaLearningAnswerActivity : BaseActivity<ActivityVocaLearningAnswerBindin
         }
     }
 
-    //다음 문제제
+    //정답 확인
+
 }
