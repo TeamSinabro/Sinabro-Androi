@@ -45,7 +45,7 @@ class PronounceLearningActivity :
         initAudio()
         goAnswer()
         clickRecordBtn()
-
+        checkLoading()
         sendData()
     }
 
