@@ -9,6 +9,7 @@ import com.sinabro.domain.model.response.pronounce.PronounceGetSentenceData
 import com.sinabro.domain.model.response.pronounce.PronouncePostData
 import com.sinabro.domain.usecase.pronounce.GetPronounceSentenceDataUseCase
 import com.sinabro.domain.usecase.pronounce.PostPronounceDataUseCase
+import com.sinabro.presentation.base.LoadedViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -18,7 +19,8 @@ import javax.inject.Inject
 class PronounceViewModel @Inject constructor(
     private val postPronounceDataUseClass: PostPronounceDataUseCase,
     private val getPronounceSentenceDataUseCase: GetPronounceSentenceDataUseCase
-)  : ViewModel() {
+)  : ViewModel(), LoadedViewModel {
+    override val onLoadingEnd = MutableLiveData<Boolean>()
 
     var audionContents : MutableLiveData<String> = MutableLiveData()
 
@@ -50,6 +52,9 @@ class PronounceViewModel @Inject constructor(
                     it.printStackTrace()
                     Timber.d("pronounce 데이터 통신 실패!")
                 }
+                .also {
+                    onLoadingEnd.value = true
+                }
         }
     }
 
@@ -64,6 +69,9 @@ class PronounceViewModel @Inject constructor(
                 .onFailure {
                     it.printStackTrace()
                     Timber.d("pronounce 문제 통신 실패!")
+                }
+                .also {
+                    onLoadingEnd.value = true
                 }
         }
 

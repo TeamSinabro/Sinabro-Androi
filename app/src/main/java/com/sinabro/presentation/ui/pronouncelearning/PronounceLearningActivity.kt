@@ -72,6 +72,7 @@ class PronounceLearningActivity :
         val sinabroData = SinabroShareData
         Timber.d("문제 서버  통신 실행")
         Timber.d("문제 서버 ${sinabroData.publisher}")
+        showLoading()
         pronounceViewModel.getPronounceSentence("지학사", "사회", sinabroData.chapter)
     }
 
@@ -160,6 +161,7 @@ class PronounceLearningActivity :
             TODO("VERSION.SDK_INT < O")
         }
         Timber.d("audioContent $audioContent")
+        showLoading()
         pronounceViewModel.postPronounce(
             PronouncePostItem(
                 "c2848d62-dd79-4f12-bdbe-2288528d5669",
@@ -177,6 +179,13 @@ class PronounceLearningActivity :
             intent.putExtra("pronounceScore", it.score.toString())
             startActivity(intent)
             finish()
+        }
+    }
+
+    //로딩 체크
+    private fun checkLoading(){
+        pronounceViewModel.onLoadingEnd.observe(this){
+            dismissLoading()
         }
 
     }
