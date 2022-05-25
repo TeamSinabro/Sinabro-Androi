@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:dotsColor="@color/sinabro_dark_pink"
-            app:selectedDotColor="@color/black"
+            app:selectedDotColor="@color/sinabro_drak_gray"
             android:layout_marginTop="30dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
