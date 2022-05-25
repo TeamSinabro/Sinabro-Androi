@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/drawable/ic_arrow_black_end.xml" value="0.108" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1565" />
+        <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/drawable/ic_onboarding_one.xml" value="0.1265" />
+        <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/drawable/ic_onboarding_two.xml" value="0.1265" />
+        <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/drawable/ic_vector_based.xml" value="0.1265" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/drawable/rectangle_fill_dark_pink_radius_10.xml" value="0.1565" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/drawable/rectangle_fill_pink_140_50.xml" value="0.1535" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/drawable/rectangle_fill_pink_140_50_radius_10.xml" value="0.1565" />
@@ -20,8 +23,9 @@
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/activity_voca_learning_answer.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/activity_voca_search.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/fragment_on_boarding_four.xml" value="0.2390625" />
-        <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/fragment_on_boarding_one.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/fragment_on_boarding_three.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/fragment_on_boarding_one.xml" value="0.2" />
+        <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/fragment_on_boarding_three.xml" value="0.2" />
+        <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/fragment_on_boarding_two.xml" value="0.176" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/item_spinner.xml" value="0.12335359675785208" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/item_voca_learning.xml" value="0.176" />
         <entry key="..\:/Users/kht07/Sinabro-Android/app/src/main/res/layout/item_voca_search.xml" value="0.176" />
