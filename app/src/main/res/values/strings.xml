@@ -33,7 +33,9 @@
     <!-- 어휘학습-->
     <string name="right">정답입니다!</string>
     <string name="fail">틀렸습니다!</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- 온보딩 -->
+    <string name="first_onboarding">원하는 출판사와 교과서 및 단원을 선택하세요</string>
 
 </resources>
