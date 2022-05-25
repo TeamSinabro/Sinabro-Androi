@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sinabro"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".OnBoardingActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.ui.pronouncelearning.PronounceLearningAnswerActivity"
             android:exported="false" />
@@ -23,8 +25,8 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.vocasearch.VocaSearchActivity"
-            android:windowSoftInputMode="adjustNothing"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".presentation.ui.vocalearning.VocaLearningActivity"
             android:exported="false" />

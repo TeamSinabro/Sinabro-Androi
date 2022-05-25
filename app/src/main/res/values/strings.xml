@@ -33,5 +33,7 @@
     <!-- 어휘학습-->
     <string name="right">정답입니다!</string>
     <string name="fail">틀렸습니다!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

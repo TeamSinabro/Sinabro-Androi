@@ -114,6 +114,9 @@ dependencies {
     implementation(ThirdPartyDependencies.retrofitGsonConverter)
     implementation("com.squareup.retrofit2:retrofit-converters:2.4.0")
 
+    //indicator
+    implementation("com.tbuonomo:dotsindicator:4.2")
+
 // Androidx Security
     implementation(AndroidXDependencies.security)
     testImplementation(TestDependencies.jUnit)
