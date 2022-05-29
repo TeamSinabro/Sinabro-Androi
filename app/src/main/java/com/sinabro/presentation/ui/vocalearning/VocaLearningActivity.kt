@@ -67,7 +67,8 @@ class VocaLearningActivity :
     //힌트 체크
     private fun checkHint(){
         binding.textVocaLearningDefinition.setOnClickListener {
-            binding.vocaHint = !vocaLearningViewModel.hint
+            vocaLearningViewModel.hint = !vocaLearningViewModel.hint
+            binding.vocaHint = vocaLearningViewModel.hint
         }
 
     }
