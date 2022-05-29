@@ -23,7 +23,8 @@ class PronounceLearningAnswerActivity : BaseActivity<ActivityPronounceLearningAn
     //점수 받아오기
     private fun initScore(){
         val score = intent.getStringExtra("pronounceScore")
-        binding.textPronounceLearningScore.text = score
+        val dNum = ((score?.toDouble()?.times(20) ?:0 ))
+        binding.textPronounceLearningScore.text = String.format("%2.f", dNum)
 
 
     }
