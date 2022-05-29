@@ -47,7 +47,7 @@ class VocaLearningActivity :
     //데이터 받아오기
     private fun initView() {
         val data = SinabroShareData
-        binding.vocaHint = true
+        binding.vocaHint = vocaLearningViewModel.hint
         vocaLearningAdapter = VocaLearningAdapter()
         binding.rcVocaLearning.adapter = vocaLearningAdapter
         showLoading()
@@ -66,11 +66,8 @@ class VocaLearningActivity :
     }
     //힌트 체크
     private fun checkHint(){
-        binding.textVocaLearningDefinitionHint.setOnClickListener {
-            binding.vocaHint = false
-        }
         binding.textVocaLearningDefinition.setOnClickListener {
-            binding.vocaHint = true
+            binding.vocaHint = !vocaLearningViewModel.hint
         }
 
     }
