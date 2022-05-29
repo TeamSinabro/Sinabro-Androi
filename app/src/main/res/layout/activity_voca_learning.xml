@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="vocaGetLearningData"
             type="com.sinabro.domain.model.response.vocalearning.VocaGetLearningData" />
+
+        <variable
+            name="vocaHint"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,9 +43,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             listToText="@{vocaGetLearningData.vocaDefinition}"
+            android:visibility="@{vocaHint? View.GONE : View.VISIBLE}"
             android:gravity="center"
             android:textSize="15sp"
             android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_bold"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_example_sentence"
+            app:layout_constraintStart_toStartOf="@+id/text_example_sentence"
+            app:layout_constraintEnd_toEndOf="@+id/text_example_sentence"
+            android:background="@drawable/rectangle_fill_sinabro_gray_radius_5" />
+
+        <TextView
+            android:id="@+id/text_voca_learning_definition_hint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/voca_learning_hint"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:visibility="@{vocaHint? View.VISIBLE : View.GONE}"
             android:fontFamily="@font/notosanskr_bold"
             android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@+id/text_example_sentence"

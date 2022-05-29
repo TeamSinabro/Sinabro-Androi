@@ -32,6 +32,7 @@ class VocaLearningActivity :
         answerCheck()
         clickAnswerCheck()
         checkLoading()
+        checkHint()
     }
 
     //정답 확인
@@ -46,6 +47,7 @@ class VocaLearningActivity :
     //데이터 받아오기
     private fun initView() {
         val data = SinabroShareData
+        binding.vocaHint = true
         vocaLearningAdapter = VocaLearningAdapter()
         binding.rcVocaLearning.adapter = vocaLearningAdapter
         showLoading()
@@ -62,6 +64,17 @@ class VocaLearningActivity :
             vocaLearningViewModel.answerCheck.value = i == vocaLearningViewModel.vocaLearningData.value?.answer
         }
     }
+    //힌트 체크
+    private fun checkHint(){
+        binding.textVocaLearningDefinitionHint.setOnClickListener {
+            binding.vocaHint = false
+        }
+        binding.textVocaLearningDefinition.setOnClickListener {
+            binding.vocaHint = true
+        }
+
+    }
+
 
     //정답 확인 버튼 클릭
     private fun clickAnswerCheck(){
