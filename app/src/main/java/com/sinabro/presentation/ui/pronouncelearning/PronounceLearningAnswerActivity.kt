@@ -33,15 +33,10 @@ class PronounceLearningAnswerActivity : BaseActivity<ActivityPronounceLearningAn
     }
     //다음문제
     private fun nextAnswer(){
-        if(SinabroShareData.answerNum != 6){
-            finish()
-        }else{
-            val intent = Intent(this, PronounceLearningActivity::class.java)
-            startActivity(intent)
-            finish()
-
+        binding.textPronounceLearningNext.setOnClickListener {
+                val intent = Intent(this, PronounceLearningActivity::class.java)
+                startActivity(intent)
+                finish()
         }
-
-
     }
 }
