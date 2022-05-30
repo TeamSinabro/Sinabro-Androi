@@ -163,6 +163,9 @@ dependencies {
 
     //update
     implementation("com.google.android.play:core:1.10.3")
+
+    //폭죽
+    implementation("nl.dionsegijn:konfetti-xml:2.0.2")
 }
 kapt {
     correctErrorTypes = true

@@ -79,10 +79,12 @@ class VocaLearningActivity :
         binding.textVocaLearningOk.setOnClickListener {
             val answer = vocaLearningViewModel.answerCheck.value
             val definition = vocaLearningViewModel.vocaLearningData.value?.vocaDefinition
+            val right = vocaLearningViewModel.vocaLearningData.value?.answer
             val intent = Intent(this, VocaLearningAnswerActivity::class.java)
             intent.apply {
                 putExtra("answer", answer)
                 putExtra("definition", definition?.toTypedArray())
+                putExtra("right", right)
             }
             startActivity(intent)
             finish()

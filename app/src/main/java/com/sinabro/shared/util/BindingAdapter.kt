@@ -22,7 +22,28 @@ object BindingAdapter {
         }else{
             value?.joinToString("," + "\n")?.replace(",","\n").also { textView.text = it }
         }
+    }
 
+    //어휘 학습 정의 구분
+    @JvmStatic
+    @BindingAdapter("definition", "division", requireAll = false)
+    fun vocaLearningDefinition(textView: TextView, definition: List<String>? , division : Boolean){
+        if(division){
+            textView.text = "단어 정의 확인하기"
+        }else{
+            definition?.joinToString("," + "\n")?.replace(",","\n").also { textView.text = it }
+        }
+    }
+
+    //어휘 학습 문장 구분
+    @JvmStatic
+    @BindingAdapter("sentence", "divisionSentence", requireAll = false)
+    fun vocaLearningSentence(textView: TextView, sentence: List<String>? , divisionSentence : Boolean){
+        if(divisionSentence){
+            textView.text = "문장들 확인하기"
+        }else{
+            sentence?.joinToString("," + "\n")?.replace(",","\n").also { textView.text = it }
+        }
     }
 
 
