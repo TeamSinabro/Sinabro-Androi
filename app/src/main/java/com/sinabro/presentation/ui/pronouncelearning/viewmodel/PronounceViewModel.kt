@@ -46,6 +46,7 @@ class PronounceViewModel @Inject constructor(
             runCatching { postPronounceDataUseClass(pronouncePostItem) }
                 .onSuccess {
                     _pronounceData.value = it
+                    Timber.d("pronounce 데이터 ${it.recognized}")
                     Timber.d("pronounce 데이터 통신 성공!")
                 }
                 .onFailure {

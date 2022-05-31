@@ -24,6 +24,7 @@ object PronounceMapper {
     fun mapperToPronounceData(responsePronouncePostData: ResponsePronounceData): PronouncePostData {
         return PronouncePostData(
             score = responsePronouncePostData.return_object.score,
+            recognized = responsePronouncePostData.return_object.recognized
         )
     }
 
