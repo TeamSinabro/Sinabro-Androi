@@ -10,6 +10,10 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
+import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
+import com.kakao.sdk.newtoneapi.TextToSpeechClient
+import com.kakao.sdk.newtoneapi.TextToSpeechListener
+import com.kakao.sdk.newtoneapi.TextToSpeechManager
 import com.sinabro.R
 import com.sinabro.databinding.ActivityPronounceLearningBinding
 import com.sinabro.domain.model.request.PronouncePostItem
@@ -33,6 +37,7 @@ class PronounceLearningActivity :
     private val maxLenSpeech = 16000 * 45
     private val speechData = ByteArray(maxLenSpeech * 2)
     private lateinit var audio: AudioRecord
+    private lateinit var ttsClient : TextToSpeechClient
     var bufferSize = 0
     var lenSpeech = 0
     var forceStop = false
@@ -41,12 +46,46 @@ class PronounceLearningActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initPronounceSentence()
+        initSpeechRecognize()
         setPronounceSentence()
         initAudio()
         goAnswer()
         clickRecordBtn()
         checkLoading()
         sendData()
+        clickListenTTS()
+    }
+    //음성인식 음성합성 초기화
+    private fun initSpeechRecognize(){
+        SpeechRecognizerManager.getInstance().initializeLibrary(this)
+        TextToSpeechManager.getInstance().initializeLibrary(this)
+    }
+    //듣기 이벤트(TTS)
+    private fun clickListenTTS(){
+        binding.textPronounceLearningListen.setOnClickListener {
+            //TTS 클라이언트 생성
+            ttsClient = TextToSpeechClient.Builder()
+                .setSpeechMode(TextToSpeechClient.NEWTONE_TALK_1)     // 음성합성방식
+                .setSpeechSpeed(1.0)            // 발음 속도(0.5~4.0)
+                .setSpeechVoice(TextToSpeechClient.VOICE_WOMAN_READ_CALM)  //TTS 음색 모드 설정(여성 차분한 낭독체)
+                .setListener(object : TextToSpeechListener{
+                    override fun onFinished() {
+                        val intSentSize = ttsClient.sentDataSize      //세션 중에 전송한 데이터 사이즈
+                        val intRecvSize = ttsClient.receivedDataSize  //세션 중에 전송받은 데이터 사이즈
+
+                        val strInacctiveText = "handleFinished() SentSize : $intSentSize  RecvSize : $intRecvSize"
+
+                        Timber.d("tts $strInacctiveText")
+                    }
+
+                    override fun onError(code: Int, message: String?) {
+                        Timber.d("tts 오류 $code and $message")
+                    }
+                })
+                .build()
+            val text = pronounceViewModel.pronounceSentence.value?.problem ?: ""
+            ttsClient.play(text)
+        }
     }
 
     //사용자 점수 확인
@@ -187,6 +226,10 @@ class PronounceLearningActivity :
         pronounceViewModel.onLoadingEnd.observe(this){
             dismissLoading()
         }
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        TextToSpeechManager.getInstance().finalizeLibrary()
     }
 }

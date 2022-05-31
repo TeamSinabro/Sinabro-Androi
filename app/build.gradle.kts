@@ -156,6 +156,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("androidx.work:work-runtime:2.8.0-alpha01")
+    implementation("com.kakao.sdk","newtone","6.1.4")
 
 
     //Timber

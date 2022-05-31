@@ -3,11 +3,13 @@ package com.sinabro.presentation.ui.onboarding
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kakao.util.helper.Utility
 import com.sinabro.R
 import com.sinabro.databinding.ActivityOnBoardingBinding
 import com.sinabro.presentation.base.BaseActivity
 import com.sinabro.presentation.ui.onboarding.adapter.OnBoardingAdapter
 import com.sinabro.presentation.ui.subjectselect.SubjectSelectActivity
+import timber.log.Timber
 
 class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>(R.layout.activity_on_boarding) {
     private lateinit var onBoardingAdapter : OnBoardingAdapter
@@ -15,6 +17,8 @@ class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>(R.layout.acti
         super.onCreate(savedInstanceState)
         initView()
         goSubjectSelect()
+        var keyHash = Utility.getKeyHash(this)
+        Timber.d("keyhash : $keyHash")
     }
 
 

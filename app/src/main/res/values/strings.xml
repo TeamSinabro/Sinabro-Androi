@@ -43,4 +43,6 @@
     <string name="four_onboarding">선택한 출판사와 교과서, 단원에 대한 문장을 읽어보며 내 발음 점수를 측정할 수 있어요</string>
     <string name="start">시작하기</string>
 
+    <string name="kakao_app_key">b65d5db54c8aa87db15c9d08bf9880b3</string>
+
 </resources>
