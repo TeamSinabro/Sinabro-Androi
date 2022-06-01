@@ -16,7 +16,7 @@ class ListenLearningAnswerActivity : BaseActivity<ActivityListenLearningAnswerBi
     private fun initView(){
         val answer = intent.getStringExtra("answer")
         val userAnswer = intent.getStringExtra("userAnswer")
-        binding.textListenAnswer.text = userAnswer
+        binding.textListenUserAnswer.text = userAnswer
         binding.textListenAnswer.text = answer
     }
 }

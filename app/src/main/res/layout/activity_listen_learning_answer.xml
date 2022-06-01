@@ -24,6 +24,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,6 +39,7 @@
             android:background="@drawable/rectangle_fill_sinabro_gray_radius_5"
             android:fontFamily="@font/notosanskr_bold"
             android:gravity="center"
+            android:padding="20dp"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"

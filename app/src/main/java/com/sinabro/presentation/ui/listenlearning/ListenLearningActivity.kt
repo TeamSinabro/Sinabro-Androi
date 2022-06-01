@@ -71,14 +71,14 @@ class ListenLearningActivity : BaseActivity<ActivityListenLearningBinding>(R.lay
 
     //사용자 문장 입력후 정답 확인
     private fun clickAnswerCheck(){
-        val intent = Intent(this, ListenLearningAnswerActivity::class.java )
-        intent.apply{
-            putExtra("userAnswer", binding.etListenSentence.text)
-            putExtra("answer", listenLearningViewModel.sentence.value)
+        binding.textListenLearningOk.setOnClickListener {
+            val intent = Intent(this, ListenLearningAnswerActivity::class.java )
+            intent.apply{
+                putExtra("userAnswer", binding.etListenSentence.text)
+                putExtra("answer", listenLearningViewModel.sentence.value)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
-
-
     }
 
 
