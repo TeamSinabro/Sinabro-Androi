@@ -22,8 +22,11 @@ class PronounceViewModel @Inject constructor(
 )  : ViewModel(), LoadedViewModel {
     override val onLoadingEnd = MutableLiveData<Boolean>()
 
-    var audionContents : MutableLiveData<String> = MutableLiveData()
+    //음성인식 데이터
+    var sttData = MutableLiveData<String>()
 
+    //음성 녹음 job 멈췄을때
+    var state = MutableLiveData<Boolean>()
 
 
     //발음 데이터

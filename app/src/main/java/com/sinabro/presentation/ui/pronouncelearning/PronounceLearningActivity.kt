@@ -10,10 +10,8 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
-import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
-import com.kakao.sdk.newtoneapi.TextToSpeechClient
-import com.kakao.sdk.newtoneapi.TextToSpeechListener
-import com.kakao.sdk.newtoneapi.TextToSpeechManager
+import com.dialoid.speech.recognition.SpeechRecognizer
+import com.kakao.sdk.newtoneapi.*
 import com.sinabro.R
 import com.sinabro.databinding.ActivityPronounceLearningBinding
 import com.sinabro.domain.model.request.PronouncePostItem
@@ -21,10 +19,7 @@ import com.sinabro.presentation.base.BaseActivity
 import com.sinabro.presentation.ui.pronouncelearning.viewmodel.PronounceViewModel
 import com.sinabro.shared.util.SinabroShareData
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import okhttp3.internal.and
 import timber.log.Timber
 import java.util.*
@@ -60,6 +55,48 @@ class PronounceLearningActivity :
         SpeechRecognizerManager.getInstance().initializeLibrary(this)
         TextToSpeechManager.getInstance().initializeLibrary(this)
     }
+    //STT 클라이언트 생성 및 콜백
+    private fun setSTTClient(){
+        val builder = SpeechRecognizerClient.Builder().setServiceType(SpeechRecognizerClient.SERVICE_TYPE_WEB)
+        val client = builder.build()
+
+        client.setSpeechRecognizeListener(object : SpeechRecognizeListener{
+            override fun onReady() {
+                Timber.d("recordStart")
+            }
+
+            override fun onBeginningOfSpeech() {
+                Timber.d("recordStart")
+            }
+
+            override fun onEndOfSpeech() {
+                Timber.d("recordEnd")
+            }
+
+            override fun onError(errorCode: Int, errorMsg: String?) {
+                Timber.d("recordError")
+            }
+
+            override fun onPartialResult(partialResult: String?) {
+                Timber.d("recordStart")
+            }
+
+            override fun onResults(results: Bundle?) {
+                pronounceViewModel.sttData.value = results?.getStringArrayList(SpeechRecognizerClient.KEY_RECOGNITION_RESULTS)?.get(0)
+            }
+
+            override fun onAudioLevel(audioLevel: Float) {
+                Timber.d("recordStart")
+            }
+
+            override fun onFinished() {
+                Timber.d("recordFinish")
+            }
+        })
+
+        client.startRecording(true)
+    }
+
     //듣기 이벤트(TTS)
     private fun clickListenTTS(){
         binding.textPronounceLearningListen.setOnClickListener {
@@ -100,6 +137,7 @@ class PronounceLearningActivity :
     private fun clickRecordBtn() {
         binding.textPronounceLearningRec.setOnClickListener {
             saveRecording()
+            setSTTClient()
         }
 
         binding.textPronounceLearningRecStop.setOnClickListener {
@@ -160,7 +198,7 @@ class PronounceLearningActivity :
             val inBuffer = ShortArray(bufferSize)
             while(isActive){
                 val ret = audio.read(inBuffer, 0, bufferSize)
-                Timber.d("저장 $ret")
+                Timber.d("ret $ret")
                 for (i in 0 until ret) {
                     Timber.d("저장 계속 수행")
                     if (lenSpeech >= maxLenSpeech) {
@@ -171,9 +209,9 @@ class PronounceLearningActivity :
                     lenSpeech++
                 }
             }
-            Timber.d("저장 종료")
             audio.stop()
             audio.release()
+
         }
         pronounceViewModel.recording.observe(this){
             if(it){
@@ -181,6 +219,7 @@ class PronounceLearningActivity :
             }else{
                 job.cancel()
                 postPronounce()
+                Timber.d("저장 종료")
             }
         }
 
@@ -199,8 +238,7 @@ class PronounceLearningActivity :
         } else {
             TODO("VERSION.SDK_INT < O")
         }
-        Timber.d("audioContent $audioContent")
-        showLoading()
+        // Timber.d("audioContent $audioContent")
         pronounceViewModel.postPronounce(
             PronouncePostItem(
                 "c2848d62-dd79-4f12-bdbe-2288528d5669",
@@ -215,7 +253,10 @@ class PronounceLearningActivity :
     private fun sendData() {
         pronounceViewModel.pronounceData.observe(this) {
             val intent = Intent(this, PronounceLearningAnswerActivity::class.java)
-            intent.putExtra("pronounceScore", it.score.toString())
+            intent.apply {
+                putExtra("pronounceScore", it.score.toString())
+                putExtra("sttData", pronounceViewModel.sttData.value)
+            }
             startActivity(intent)
             finish()
         }
@@ -231,5 +272,6 @@ class PronounceLearningActivity :
     override fun onDestroy() {
         super.onDestroy()
         TextToSpeechManager.getInstance().finalizeLibrary()
+        SpeechRecognizerManager.getInstance().finalizeLibrary()
     }
 }
