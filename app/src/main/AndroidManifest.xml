@@ -17,10 +17,10 @@
         android:theme="@style/Theme.Sinabro"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ListenLearningAnswerActivity"
+            android:name=".presentation.ui.listenlearning.ListenLearningAnswerActivity"
             android:exported="false" />
         <activity
-            android:name=".ListenLearningActivity"
+            android:name=".presentation.ui.listenlearning.ListenLearningActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.onboarding.OnBoardingActivity"
