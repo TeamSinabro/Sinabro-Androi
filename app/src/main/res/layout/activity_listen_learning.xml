@@ -48,38 +48,23 @@
             />
 
 
-        <TextView
-            android:id="@+id/text_listen_learning_main"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/main"
-            android:paddingHorizontal="35dp"
-            android:gravity="center_horizontal"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/notosanskr_bold"
-            android:background="@drawable/rectangle_fill_dark_pink_radius_10"
-            android:layout_marginBottom="25dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text_pronounce_learning_next"
-            app:layout_constraintStart_toStartOf="@+id/text_listen_sentence"
-            />
 
         <TextView
-            android:id="@+id/text_pronounce_learning_next"
-            android:layout_width="wrap_content"
+            android:id="@+id/text_listen_learning_ok"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/next_problem"
-            android:paddingHorizontal="28dp"
+            android:text="@string/answer_ok"
             android:gravity="center_horizontal"
             android:textSize="24sp"
             android:textColor="@color/black"
             android:fontFamily="@font/notosanskr_bold"
             android:background="@drawable/rectangle_fill_dark_pink_radius_10"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginBottom="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/text_listen_sentence"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
