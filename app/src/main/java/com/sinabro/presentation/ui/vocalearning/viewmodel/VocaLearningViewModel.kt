@@ -38,6 +38,7 @@ class VocaLearningViewModel @Inject constructor(
     //문장 힌트
     var sentenceHint = true
 
+
      fun getVocaLearningData(publisher : String, subject : String, chapter : Int){
         viewModelScope.launch {
             runCatching { getVocaLearningDataUseCase(publisher, subject, chapter) }
