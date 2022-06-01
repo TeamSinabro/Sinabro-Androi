@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Sinabro"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ListenLearningAnswerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListenLearningActivity"
             android:exported="false" />
         <activity

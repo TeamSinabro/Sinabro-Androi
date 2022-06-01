@@ -1,5 +1,6 @@
 package com.sinabro.presentation.ui.listenlearning
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -27,6 +28,7 @@ class ListenLearningActivity : BaseActivity<ActivityListenLearningBinding>(R.lay
         initSentenceData()
         clickListenTTS()
         checkLoading()
+        clickAnswerCheck()
     }
     //음성인식 음성합성 초기화
     private fun initSpeechRecognize(){
@@ -65,6 +67,18 @@ class ListenLearningActivity : BaseActivity<ActivityListenLearningBinding>(R.lay
         val data = SinabroShareData
         showLoading()
         listenLearningViewModel.getSentenceData(data.publisher, data.subject, data.chapter)
+    }
+
+    //사용자 문장 입력후 정답 확인
+    private fun clickAnswerCheck(){
+        val intent = Intent(this, ListenLearningAnswerActivity::class.java )
+        intent.apply{
+            putExtra("userAnswer", binding.etListenSentence.text)
+            putExtra("answer", listenLearningViewModel.sentence.value)
+        }
+        startActivity(intent)
+
+
     }
 
 
