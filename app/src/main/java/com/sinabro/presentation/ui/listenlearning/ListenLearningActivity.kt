@@ -74,7 +74,8 @@ class ListenLearningActivity : BaseActivity<ActivityListenLearningBinding>(R.lay
         binding.textListenLearningOk.setOnClickListener {
             val intent = Intent(this, ListenLearningAnswerActivity::class.java )
             intent.apply{
-                putExtra("userAnswer", binding.etListenSentence.text)
+                putExtra("userAnswer", binding.etListenSentence.text.toString())
+                Timber.d("Listening ${binding.etListenSentence.text}")
                 putExtra("answer", listenLearningViewModel.sentence.value)
             }
             startActivity(intent)
