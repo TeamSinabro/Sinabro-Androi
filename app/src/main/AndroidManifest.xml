@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sinabro">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -16,8 +17,11 @@
         android:theme="@style/Theme.Sinabro"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ListenLearningActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.onboarding.OnBoardingActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,8 +43,7 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.subjectselect.SubjectSelectActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".presentation.ui.pronouncelearning.PronounceLearningActivity"
             android:exported="false" />
