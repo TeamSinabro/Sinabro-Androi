@@ -12,5 +12,74 @@
         android:layout_height="match_parent"
         tools:context=".presentation.ui.listenlearning.ListenLearningActivity">
 
+        <TextView
+            android:id="@+id/text_listen_sentence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/listen_sentence"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_bold"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginEnd="43dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/rectangle_fill_sinabro_gray_radius_5" />
+
+        <EditText
+            android:id="@+id/et_listen_sentence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_fill_sinabro_gray_radius_5"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_bold"
+            android:hint="@string/listen_answer_hint"
+            android:padding="30dp"
+            app:layout_constraintStart_toStartOf="@+id/text_listen_sentence"
+            app:layout_constraintEnd_toEndOf="@+id/text_listen_sentence"
+            app:layout_constraintTop_toBottomOf="@+id/text_listen_sentence"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="70dp"
+            />
+
+
+        <TextView
+            android:id="@+id/text_listen_learning_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/main"
+            android:paddingHorizontal="35dp"
+            android:gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_bold"
+            android:background="@drawable/rectangle_fill_dark_pink_radius_10"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/text_pronounce_learning_next"
+            app:layout_constraintStart_toStartOf="@+id/text_listen_sentence"
+            />
+
+        <TextView
+            android:id="@+id/text_pronounce_learning_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_problem"
+            android:paddingHorizontal="28dp"
+            android:gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_bold"
+            android:background="@drawable/rectangle_fill_dark_pink_radius_10"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/text_listen_sentence"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

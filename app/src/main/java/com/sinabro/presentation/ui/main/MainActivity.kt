@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.sinabro.R
 import com.sinabro.databinding.ActivityMainBinding
 import com.sinabro.presentation.base.BaseActivity
+import com.sinabro.presentation.ui.listenlearning.ListenLearningActivity
 import com.sinabro.presentation.ui.pronouncelearning.PronounceLearningActivity
 import com.sinabro.presentation.ui.subjectselect.SubjectSelectActivity
 import com.sinabro.presentation.ui.vocalearning.VocaLearningActivity
@@ -42,6 +43,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
         binding.textVocaSearch.setOnClickListener {
             clickView(VocaSearchActivity())
+        }
+        binding.textListenLearning.setOnClickListener {
+            clickView(ListenLearningActivity())
         }
     }
 
