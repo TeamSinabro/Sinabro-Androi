@@ -40,6 +40,7 @@
             android:fontFamily="@font/notosanskr_bold"
             android:hint="@string/listen_answer_hint"
             android:padding="30dp"
+            android:textCursorDrawable="@drawable/edittext_cursor"
             app:layout_constraintStart_toStartOf="@+id/text_listen_sentence"
             app:layout_constraintEnd_toEndOf="@+id/text_listen_sentence"
             app:layout_constraintTop_toBottomOf="@+id/text_listen_sentence"
