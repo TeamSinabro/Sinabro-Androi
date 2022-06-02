@@ -8,6 +8,7 @@ import com.sinabro.databinding.ActivityMainBinding
 import com.sinabro.presentation.base.BaseActivity
 import com.sinabro.presentation.ui.listenlearning.ListenLearningActivity
 import com.sinabro.presentation.ui.pronouncelearning.PronounceLearningActivity
+import com.sinabro.presentation.ui.qalearning.QALearningActivity
 import com.sinabro.presentation.ui.subjectselect.SubjectSelectActivity
 import com.sinabro.presentation.ui.vocalearning.VocaLearningActivity
 import com.sinabro.presentation.ui.vocasearch.VocaSearchActivity
@@ -46,6 +47,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
         binding.textListenLearning.setOnClickListener {
             clickView(ListenLearningActivity())
+        }
+        binding.textQaLearning.setOnClickListener {
+            clickView(QALearningActivity())
         }
     }
 

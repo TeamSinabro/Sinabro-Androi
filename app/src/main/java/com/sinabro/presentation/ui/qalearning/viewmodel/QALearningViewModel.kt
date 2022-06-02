@@ -28,6 +28,7 @@ class QALearningViewModel @Inject constructor(
                     Timber.d("qa 서버 통신 완료")
                 }
                 .onFailure {
+                    it.printStackTrace()
                     Timber.d("qa 서버 통신 실패")
                 }
                 .also {

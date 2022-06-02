@@ -24,10 +24,10 @@ object NetworkModule {
 
     //localhost 연결시 무선 LAN 어댑터 ipv4 받아와야함 :8080
     @Provides
-    fun SinabroBaseUrl() = "http://172.30.1.44:8080/"
+    fun SinabroBaseUrl() = "http://192.168.25.14:8080/"
 
     @Provides
-    fun SinabroQA() = "http://127.0.0.1:5000/"
+    fun SinabroQA() = "http://192.168.25.14:5000/"
 
     @Singleton
     @Provides
@@ -36,6 +36,8 @@ object NetworkModule {
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE)
             OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30,TimeUnit.SECONDS)
                 .build()
         } else {
             OkHttpClient.Builder().build()

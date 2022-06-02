@@ -52,4 +52,5 @@
     <!-- QA 학습 -->
     <string name="qa_hint">질문하고 싶은 내용을 여기에 입력한뒤 검색하기 버튼을 눌러주세요</string>
     <string name="qa_search">검색하기</string>
+    <string name="qa_learning">QA학습</string>
 </resources>

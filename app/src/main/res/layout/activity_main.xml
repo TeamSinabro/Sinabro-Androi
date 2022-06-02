@@ -97,6 +97,21 @@
             android:layout_marginTop="40dp"
             android:background="@drawable/rectangle_fill_pink_140_50_radius_10"/>
 
+        <TextView
+            android:id="@+id/text_qa_learning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/qa_learning"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_listen_learning"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rectangle_fill_pink_140_50_radius_10"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
