@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sinabro.domain.usecase.qalearning.GetQALearningDataUseCase
+import com.sinabro.presentation.base.LoadedViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -12,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class QALearningViewModel @Inject constructor(
     private val getQALearningDataUseCase : GetQALearningDataUseCase
-) : ViewModel() {
+) : ViewModel(), LoadedViewModel {
 
     var answer = MutableLiveData<String>()
 
@@ -29,6 +30,11 @@ class QALearningViewModel @Inject constructor(
                 .onFailure {
                     Timber.d("qa 서버 통신 실패")
                 }
+                .also {
+                    onLoadingEnd.value = true
+                }
         }
     }
+
+    override val onLoadingEnd = MutableLiveData<Boolean>()
 }

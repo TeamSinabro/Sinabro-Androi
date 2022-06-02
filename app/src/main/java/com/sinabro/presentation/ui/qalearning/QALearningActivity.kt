@@ -15,9 +15,31 @@ class QALearningActivity : BaseActivity<ActivityQalearningBinding>(R.layout.acti
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setData()
+        initQAData()
+        checkLoading()
     }
 
+    //데이터 받아오기
+    private fun setData(){
+        binding.textQaLearningSearch.setOnClickListener {
+            val question = binding.etQaSentence.text.toString()
+            qaLearningViewModel.getQALearningData(question)
+        }
+    }
 
+    //데이터 넣기
+    private fun initQAData(){
+        qaLearningViewModel.answer.observe(this){
+            binding.qaData = it
+        }
+    }
+
+    //로딩 체크
+    private fun checkLoading(){
+        qaLearningViewModel.onLoadingEnd.observe(this){
+            dismissLoading()
+        }
+    }
 
 }
