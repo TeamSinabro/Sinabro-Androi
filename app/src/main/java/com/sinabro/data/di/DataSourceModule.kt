@@ -2,12 +2,15 @@ package com.sinabro.data.di
 
 import com.sinabro.data.api.pronounce.PronounceSentenceService
 import com.sinabro.data.api.pronounce.PronounceService
+import com.sinabro.data.api.qalearning.QAService
 import com.sinabro.data.api.vocalearning.VocaLearningService
 import com.sinabro.data.api.vocasearch.VocaSearchService
 import com.sinabro.data.datasource.remote.pronounce.PronounceDataSource
 import com.sinabro.data.datasource.remote.pronounce.PronounceDataSourceImpl
 import com.sinabro.data.datasource.remote.pronounce.PronounceSentenceDataImpl
 import com.sinabro.data.datasource.remote.pronounce.PronounceSentenceDataSource
+import com.sinabro.data.datasource.remote.qalearning.QALearningDataSource
+import com.sinabro.data.datasource.remote.qalearning.QALearningDataSourceImpl
 import com.sinabro.data.datasource.remote.vocalearning.VocaLearningDataSource
 import com.sinabro.data.datasource.remote.vocalearning.VocaLearningDataSourceImpl
 import com.sinabro.data.datasource.remote.vocasearch.VocaSearchDataSource
@@ -53,5 +56,13 @@ object DataSourceModule {
         vocaLearningService : VocaLearningService
     ) : VocaLearningDataSource{
         return VocaLearningDataSourceImpl(vocaLearningService)
+    }
+
+    @Singleton
+    @Provides
+    fun qaLearningDataSource(
+        qaLearningService : QAService
+    ) : QALearningDataSource{
+        return QALearningDataSourceImpl(qaLearningService)
     }
 }
