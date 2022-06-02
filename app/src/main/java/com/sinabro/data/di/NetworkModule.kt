@@ -26,6 +26,9 @@ object NetworkModule {
     @Provides
     fun SinabroBaseUrl() = "http://172.30.1.44:8080/"
 
+    @Provides
+    fun SinabroQA() = "http://127.0.0.1:5000/"
+
     @Singleton
     @Provides
     fun provideOkHttpClient() =if (!BuildConfig.DEBUG) {
@@ -60,6 +63,17 @@ object NetworkModule {
             .build()
     }
 
+    @SianbroQARetrofit
+    @Singleton
+    @Provides
+    fun provideQARetrofit(okHttpClient: OkHttpClient) : Retrofit{
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl(SinabroQA())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
 
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
@@ -68,5 +82,9 @@ object NetworkModule {
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
     annotation class SinabroBaseRetrofit
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class SianbroQARetrofit
 
 }
