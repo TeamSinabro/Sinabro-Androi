@@ -256,6 +256,7 @@ class PronounceLearningActivity :
             intent.apply {
                 putExtra("pronounceScore", it.score.toString())
                 putExtra("sttData", pronounceViewModel.sttData.value)
+                putExtra("pronounceSentence", pronounceViewModel.pronounceSentence.value?.problem)
             }
             startActivity(intent)
             finish()
