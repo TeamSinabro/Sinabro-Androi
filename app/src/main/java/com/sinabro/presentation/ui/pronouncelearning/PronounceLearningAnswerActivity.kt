@@ -8,6 +8,7 @@ import com.sinabro.databinding.ActivityPronounceLearningAnswerBinding
 import com.sinabro.databinding.ActivityPronounceLearningBinding
 import com.sinabro.presentation.base.BaseActivity
 import com.sinabro.shared.util.SinabroShareData
+import timber.log.Timber
 
 class PronounceLearningAnswerActivity : BaseActivity<ActivityPronounceLearningAnswerBinding>(R.layout.activity_pronounce_learning_answer) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +28,16 @@ class PronounceLearningAnswerActivity : BaseActivity<ActivityPronounceLearningAn
     private fun initScore(){
         var dNum : Double = 0.0
         val score = intent.getStringExtra("pronounceScore")?.toDouble()
-        val sttData = intent.getStringExtra("sttData")
-        val problem = intent.getStringExtra("pronounceSentence")
-        dNum = if(sttData == problem){
+        var sttData = intent.getStringExtra("sttData").toString()
+        var problem = intent.getStringExtra("pronounceSentence").toString()
+
+        val regex = Regex("[^가-힣]")
+        problem = regex.replace(problem, " ")
+        sttData = regex.replace(sttData, " ")
+        Timber.d("sttDataProblem $problem")
+        Timber.d("sttData $sttData")
+        dNum = if("$sttData " == problem){
+            Timber.d("sttData와 동일")
             100.0
         }else{
             ((score!!.times(20)))

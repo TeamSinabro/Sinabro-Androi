@@ -142,6 +142,7 @@ class PronounceLearningActivity :
 
         binding.textPronounceLearningRecStop.setOnClickListener {
             stopRecording()
+            showLoading()
         }
     }
     //발음 평가 문제 서버통신
