@@ -27,7 +27,7 @@ object NetworkModule {
     fun SinabroBaseUrl() = "http://192.168.25.3:8080/"
 
     @Provides
-    fun SinabroQA() = "http://192.168.25.14:5000/"
+    fun SinabroQA() = "http://192.168.25.3:5000/"
 
     @Singleton
     @Provides
@@ -36,8 +36,9 @@ object NetworkModule {
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE)
             OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30,TimeUnit.SECONDS)
+                .connectTimeout(20000, TimeUnit.MILLISECONDS)
+                .readTimeout(20000,TimeUnit.MILLISECONDS)
+                .writeTimeout(20000, TimeUnit.MILLISECONDS)
                 .build()
         } else {
             OkHttpClient.Builder().build()
