@@ -24,7 +24,7 @@ object NetworkModule {
 
     //localhost 연결시 무선 LAN 어댑터 ipv4 받아와야함 :8080
     @Provides
-    fun SinabroBaseUrl() = "http://192.168.25.3:8080/"
+    fun SinabroBaseUrl() = "http://192.168.19.233:8080/"
 
     @Provides
     fun SinabroQA() = "http://192.168.25.3:5000/"

@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.sinabro.R
 import com.sinabro.databinding.ActivityListenLearningAnswerBinding
 import com.sinabro.presentation.base.BaseActivity
+import com.sinabro.shared.util.EditDistance
 
 class ListenLearningAnswerActivity : BaseActivity<ActivityListenLearningAnswerBinding>(R.layout.activity_listen_learning_answer) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,10 +18,12 @@ class ListenLearningAnswerActivity : BaseActivity<ActivityListenLearningAnswerBi
 
     //뷰 및 데이터 연결
     private fun initView(){
-        val answer = intent.getStringExtra("answer")
-        val userAnswer = intent.getStringExtra("userAnswer")
+        val answer = intent.getStringExtra("answer").toString()
+        val userAnswer = intent.getStringExtra("userAnswer").toString()
         binding.textListenUserAnswer.text = userAnswer
         binding.textListenAnswer.text = answer
+        val score = EditDistance().runAlgorithm(answer, userAnswer)
+        binding.textListenScore.text = score.toString()
     }
 
     //클릭 이벤트

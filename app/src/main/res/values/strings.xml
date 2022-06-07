@@ -48,6 +48,7 @@
     <string name="listen_sentence">문장 듣기</string>
     <string name="listen_answer_hint">문장 듣기 버튼을 눌러 문장을 듣고 여길 클릭해 문장을 그대로 입력하세요</string>
     <string name="kakao_app_key">b65d5db54c8aa87db15c9d08bf9880b3</string>
+    <string name="listen_answer_score">&lt; 틀린 모음, 자음, 띄어쓰기 개수 &gt;</string>
 
     <!-- QA 학습 -->
     <string name="qa_hint">질문하고 싶은 내용을 여기에 입력한뒤 검색하기 버튼을 눌러주세요</string>
