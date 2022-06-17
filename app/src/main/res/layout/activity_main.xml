@@ -86,7 +86,7 @@
             android:id="@+id/text_listen_learning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/listen_learning"
+            android:text="@string/write_learning"
             android:fontFamily="@font/notosanskr_bold"
             android:textSize="24sp"
             android:gravity="center"
