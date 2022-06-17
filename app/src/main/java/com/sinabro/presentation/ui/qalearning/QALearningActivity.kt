@@ -17,6 +17,7 @@ class QALearningActivity : BaseActivity<ActivityQalearningBinding>(R.layout.acti
         setData()
         initQAData()
         checkLoading()
+        goMain()
     }
 
     //데이터 받아오기
@@ -39,6 +40,13 @@ class QALearningActivity : BaseActivity<ActivityQalearningBinding>(R.layout.acti
     private fun checkLoading(){
         qaLearningViewModel.onLoadingEnd.observe(this){
             dismissLoading()
+        }
+    }
+
+    //메인 이동
+    private fun goMain(){
+        binding.textQaLearningMain.setOnClickListener {
+            finish()
         }
     }
 
